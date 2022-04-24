@@ -9,13 +9,26 @@ import UIKit
 
 class DetailFoodVC: UIViewController {
     
-    @IBAction func CloseButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+    @IBOutlet weak var backgroundImg: UIImageView!
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var foodName: UILabel!
+    @IBOutlet weak var purchaseDate: UILabel!
+    @IBOutlet weak var expirationDate: UILabel!
+    @IBOutlet weak var memo: UITextView!
+    
+    var foodInfo = FoodInfo()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        foodName.text = foodInfo.foodName
+        purchaseDate.text = foodInfo.foodPurchaseDate
+        expirationDate.text = foodInfo.foodExpirationDate
+        memo.text = foodInfo.foodMemo
+        backgroundImg.image = foodInfo.image
     }
     
-    @IBOutlet weak var stackView: UIStackView!
-    
-    override func updateViewConstraints() {
+    override func viewWillLayoutSubviews() {
         // 숫자가 커질수록 view가 위로 띄어짐
         let TOP_CARD_DISTANCE: CGFloat = 40.0
         
@@ -33,14 +46,18 @@ class DetailFoodVC: UIViewController {
         self.view.roundCorners(corners: [.topLeft, .topRight], radius: 10.0)
         super.updateViewConstraints()
     }
+    
 }
 
-// https://stackoverflow.com/a/41197790/225503
-extension UIView {
-   func roundCorners(corners: UIRectCorner, radius: CGFloat) {
-        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        layer.mask = mask
+extension DetailFoodVC {    // Action funcs
+    @IBAction func CloseButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func FindRecipeButton(_ sender: Any) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "RecipeVC") as? RecipeVC else { return }
+        
+        vc.foodName = foodInfo.foodName
+        present(vc, animated: true, completion: nil)
     }
 }

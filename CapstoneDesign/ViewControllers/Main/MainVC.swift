@@ -7,39 +7,107 @@
 
 import UIKit
 
-class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class MainVC: UIViewController {
+
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var sideMenuButton: ButtonStyle!
+    @IBOutlet weak var correctButton: ButtonStyle!
+    @IBOutlet weak var completeDeleteButton: ButtonStyle!
+    @IBOutlet weak var deleteCancelButton: UIButton!
+    @IBOutlet weak var recommendButton: ButtonStyle!
+    @IBOutlet weak var addDeleteButtons: UIStackView!
+    @IBOutlet weak var deleteStackView: UIStackView!
+    @IBOutlet weak var clearView: UIView!
     
-    let viewModel = ImageViewModel()
-    // DataSource
-    // 몇 개의 셀을 보여줄 것인지
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // return 셀의 개수
-        return viewModel.countOfImageList
+    let userInfo = UserInfo.sharedUserInfo
+    var foodModel = FoodModel.sharedFoodModel
+    var deleteFoodIndexList = [Int]()
+    var isDeleting = false
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = SetBackButton()
+
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
-    // 셀을 어떻게 표현할 것인지
+    override func viewWillAppear(_ animated: Bool) {
+        collectionView.reloadData()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        view.layer.opacity = 1
+    }
+}
+
+extension MainVC: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if foodModel.countOfFoodList == 0 {
+            clearView.isHidden = false
+        }
+        return foodModel.countOfFoodList
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? foodCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? FoodCell else { return UICollectionViewCell() }
         
-        let imageInfo = viewModel.imageInfo(at: indexPath.item) // indexPath.item을 기준으로 뷰모델에서 ImageInfo 가져옴
-        cell.update(info: imageInfo) // 해당 셀을 업데이트
+        let foodInfo = foodModel.foodInfo(at: indexPath.item)
+        cell.FoodUpdate(info: foodInfo)
         
+        // 삭제 관련
+        if isDeleting {
+            cell.checkView.isHidden = false
+            cell.checkView.backgroundColor = UIColor.lightGray
+        }
+        else {
+            cell.checkView.isHidden = true
+            cell.checkImg.isHidden = true
+        }
         
         return cell
     }
     
-    // Delegate
-    // 셀 선택 시
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("--> \(indexPath.item)")
-        performSegue(withIdentifier: "showDetail", sender: nil)
         
+        guard let cell = collectionView.cellForItem(at: indexPath) as? FoodCell else { return }
+        
+        if isDeleting {
+            if let index = deleteFoodIndexList.firstIndex(of: indexPath.item) {
+                cell.checkImg.isHidden = true
+                cell.checkView.backgroundColor = UIColor.lightGray
+                deleteFoodIndexList.remove(at: index)
+                print(deleteFoodIndexList)
+            }
+            else {
+                cell.checkImg.isHidden = false
+                cell.checkView.backgroundColor = UIColor.init(named: "lightSky")
+                deleteFoodIndexList.append(indexPath.item)
+                deleteFoodIndexList = Array(Set(deleteFoodIndexList))
+                deleteFoodIndexList.sort()
+                print(deleteFoodIndexList)
+            }
+            completeDeleteButton.titleLabel?.text = "삭제하기(\(deleteFoodIndexList.count))"
+        }
+        else {
+            performSegue(withIdentifier: "showDetailFood", sender: self)
+        }
     }
     
-    // DelegateFlowLayout
-    // cell 디자인
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetailFood" {
+            let vc = segue.destination as? DetailFoodVC
+            if let indexPath = collectionView.indexPathsForSelectedItems {
+                let row = indexPath[0].row
+                let foodInfo = foodModel.foodInfo(at: row)
+                vc?.foodInfo = foodInfo
+            }
+        }
+    }
+}
+
+extension MainVC: UICollectionViewDelegateFlowLayout {
     // 위 아래 간격
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
             return 20
     }
@@ -58,37 +126,95 @@ class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
  
         return size
     }
-    
-    @IBAction func addFood(_ sender: Any) {
+}
+
+extension MainVC {  // Action funcs + Custom funcs
+    @IBAction func CorrectButton(_ sender: Any) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "CorrectFoodVC") as? CorrectFoodVC else { return }
         
+        vc.delegate = self
+        vc.foodModel = foodModel
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func RecommendButton(_ sender: Any) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "RecommendVC") as? RecommendVC else { return }
+        vc.foodName = foodModel.FoodInfoList.map { $0.foodName! }
+        
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func deleteFood(_ sender: Any) {
-        
+        DeletingState()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @IBAction func CancelDeleteButton(_ sender: Any) {
+        DeletingState()
     }
     
-
+    @IBAction func FinishDeleteButton(_ sender: Any) {
+        if deleteFoodIndexList.count != 0 {
+            for i in 0...deleteFoodIndexList.count - 1 {
+                foodModel.FoodInfoList.remove(at: deleteFoodIndexList[i] - i)
+            }
+            print(foodModel.FoodInfoList)
+            deleteFoodIndexList.removeAll()
+        }
+        DeletingState()
+        // 서버에 바뀐 모델 전송 추가
+    }
+    
+    func DeletingState() {
+        if isDeleting {
+            isDeleting = false
+            self.navigationItem.title = "내 식재료"
+            recommendButton.isHidden = false
+            addDeleteButtons.isHidden = false
+            correctButton.isHidden = false
+            sideMenuButton.isHidden = false
+            deleteStackView.isHidden = true
+        }
+        else {
+            isDeleting = true
+            self.navigationItem.title = "재료 삭제"
+            recommendButton.isHidden = true
+            addDeleteButtons.isHidden = true
+            correctButton.isHidden = true
+            sideMenuButton.isHidden = true
+            deleteStackView.isHidden = false
+        }
+        collectionView.reloadData()
+    }
 }
 
 // 컬렉션뷰 커스텀 셀
-class foodCell: UICollectionViewCell {
+class FoodCell: UICollectionViewCell {
     
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
-    func update(info: ImageInfo) {
-            imgView.image = info.image
-            nameLabel.text = info.name
-        }
+    // 삭제 체크 표시
+    @IBOutlet weak var checkView: ViewStyle!
+    @IBOutlet weak var checkImg: UIImageView!
+    
+    var foodName: String!
+    var foodPDate: String!
+    var foodEDate: String!
+    var foodMemo: String!
     
     func FoodUpdate(info: FoodInfo) {
         imgView.image = info.image
         nameLabel.text = info.foodName
+        foodName = info.foodName
+        foodPDate = info.foodPurchaseDate
+        foodEDate = info.foodExpirationDate
+        foodMemo = info.foodMemo
     }
 }
 
-
+extension MainVC: CompleteCorrectDelegate {
+    func didCorrectFoodDone(_ controller: CorrectFoodVC, data: FoodModel) {
+        foodModel = data
+        collectionView.reloadData()
+    }
+}

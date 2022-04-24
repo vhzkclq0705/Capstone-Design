@@ -1,0 +1,28 @@
+PODS:
+  - Alamofire (5.5.0)
+  - FSCalendar (2.8.2)
+  - SideMenu (6.5.0)
+  - SwiftSoup (2.3.8)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.5)
+  - FSCalendar
+  - SideMenu
+  - SwiftSoup
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - FSCalendar
+    - SideMenu
+    - SwiftSoup
+
+SPEC CHECKSUMS:
+  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
+  SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
+  SwiftSoup: ba8ea2c91151881a298cba4b0628ef31e835a77f
+
+PODFILE CHECKSUM: e5b8e805a26495dc4291a170d636dce74b2df398
+
+COCOAPODS: 1.11.2

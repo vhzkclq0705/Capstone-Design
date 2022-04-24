@@ -12,7 +12,7 @@ class SearchNaviVC: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        
     }
 
 }

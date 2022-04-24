@@ -12,29 +12,18 @@ class SetAddFoodVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet weak var tableView: UITableView!
     
     var resultFoodList = [String]()
-    var addFoodModel = FoodModel()
-    var initFoodInfo = FoodInfo(foodName: "", purchaseDate: "", expirationDate: "", memo: "")
-    var receiveFoodInfo = FoodInfo(foodName: "", purchaseDate: "", expirationDate: "", memo: "")
+    var foodModel = FoodModel.sharedFoodModel
+    var addFoodModel = AddFoodModel()
+    var foodInfo = FoodInfo()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        backButton.tintColor = UIColor.white
-        
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
-        
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = SetBackButton()
         // SearchFoodVC에서 데이터가 넘어 온 후 초기화
         for name in resultFoodList {
-            initFoodInfo.foodName = name
-            addFoodModel.FoodInfoList.append(initFoodInfo)
+            foodInfo.foodName = name
+            addFoodModel.FoodInfoList.append(foodInfo)
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        print(addFoodModel.FoodInfoList)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -42,11 +31,10 @@ class SetAddFoodVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? SetAddFoodCell else { return UITableViewCell() }
         
-        cell.textLabel?.text = resultFoodList[indexPath.row]
-        cell.textLabel?.font = UIFont(name: "TmonMonsoriBlack", size: 20)
-        cell.textLabel?.textColor = UIColor.darkGray
+        cell.nameLabel.text = resultFoodList[indexPath.row]
+        cell.imgView.image = UIImage(named: "\(resultFoodList[indexPath.row]).jpg")
         
         return cell
     }
@@ -55,29 +43,53 @@ class SetAddFoodVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "SetDetailFoodVC") as? SetDetailFoodVC else { return }
         
         vc.delegate = self
-        vc.setFoodName = addFoodModel.FoodInfoList[indexPath.row].foodName
-        vc.setBuyDate = addFoodModel.FoodInfoList[indexPath.row].purchaseDate
-        vc.setEndDate = addFoodModel.FoodInfoList[indexPath.row].expirationDate
-        vc.setMemo = addFoodModel.FoodInfoList[indexPath.row].memo
+        vc.foodInfo = addFoodModel.FoodInfoList[indexPath.row]
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    @IBAction func BackButton(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
     
     @IBAction func CompleteButton(_ sender: Any) {
         // 서버로 addFoodModel.FoodInfoList 보내기
+        var cnt = 0
+        for i in 0...addFoodModel.countOfFoodList - 1 {
+            if addFoodModel.FoodInfoList[i].foodPurchaseDate == "" ||
+                addFoodModel.FoodInfoList[i].foodExpirationDate == "" ||
+                addFoodModel.FoodInfoList[i].foodMemo == "" {
+                let alert = UIAlertController(title: "식재료 \(addFoodModel.FoodInfoList[i].foodName!)의 정보를 입력해 주세요.", message: nil, preferredStyle: .alert)
+                
+                let defaultAction = UIAlertAction(title: "확인", style: .cancel)
+                
+                alert.addAction(defaultAction)
+                present(alert, animated: true, completion: nil)
+                
+                cnt += 1
+                break
+            }
+        }
+        if cnt == 0 {
+            for i in 0...addFoodModel.countOfFoodList - 1 {
+                foodModel.FoodInfoList.append(addFoodModel.FoodInfoList[i])
+            }
+            
+            self.navigationController?.popToRootViewController(animated: true)
+        }
     }
     
 }
 
-extension SetAddFoodVC: EditDelegate {
-    func didFoodEditDone(_ controller: SetDetailFoodVC, data: FoodInfo) {
-        receiveFoodInfo = data
-        if let index = addFoodModel.FoodInfoList.firstIndex(where: { $0.foodName == receiveFoodInfo.foodName }) {
-            addFoodModel.FoodInfoList[index] = receiveFoodInfo
+extension SetAddFoodVC: EditAddFoodDelegate {
+    func didAddFoodEditDone(_ controller: SetDetailFoodVC, data: FoodInfo) {
+        foodInfo = data
+        if let index = addFoodModel.FoodInfoList.firstIndex(where: { $0.foodName == foodInfo.foodName }) {
+            addFoodModel.FoodInfoList[index] = foodInfo
         }
     }
+}
+
+class SetAddFoodCell: UITableViewCell {
+    
+    @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    
 }

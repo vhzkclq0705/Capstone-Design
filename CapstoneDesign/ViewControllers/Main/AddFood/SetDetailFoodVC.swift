@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol EditDelegate {
-    func didFoodEditDone(_ controller: SetDetailFoodVC, data: FoodInfo)
+protocol EditAddFoodDelegate {
+    func didAddFoodEditDone(_ controller: SetDetailFoodVC, data: FoodInfo)
 }
 
 class SetDetailFoodVC: UIViewController, UITextViewDelegate {
 
-    var delegate: EditDelegate?
-    var addFoodInfo = FoodInfo(foodName: "", purchaseDate: "", expirationDate: "", memo: "")
+    var delegate: EditAddFoodDelegate?
+    var foodInfo = FoodInfo()
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var stackView: UIStackView!
@@ -23,64 +23,58 @@ class SetDetailFoodVC: UIViewController, UITextViewDelegate {
     @IBOutlet weak var endDate: UITextField!
     @IBOutlet weak var memo: UITextView!
     
-    var setFoodName: String!
-    var setBuyDate: String!
-    var setEndDate: String!
-    var setMemo: String!
     var textFieldDate: UITextField!
     let datePicker = UIDatePicker(frame: CGRect(x: 0, y: 0, width: 390, height: 216))
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        backButton.tintColor = UIColor.white
-        
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = SetBackButton()
         
         CreateDatePicker()
         InitFood()
     }
     
     func InitFood() {
-        imageView.image = UIImage(named: "\(setFoodName ?? "미정").jpg")
-        foodTitle.text = setFoodName
-        addFoodInfo.foodName = setFoodName
-        if setBuyDate != "" {
-            buyDate.text = setBuyDate
-        }
-        if setEndDate != "" {
-            endDate.text = setEndDate
-        }
+        imageView.image = foodInfo.image
+        foodTitle.text = foodInfo.foodName
+        buyDate.text = foodInfo.foodPurchaseDate
+        endDate.text = foodInfo.foodExpirationDate
         
         memo.layer.borderWidth = 1.0
         memo.layer.borderColor = UIColor.lightGray.cgColor
-        if setMemo == "" {
+        if foodInfo.foodMemo == "" {
             memo.text = "메모를 입력하세요."
             memo.textColor = UIColor.lightGray
         }
         else {
-            memo.text = setMemo
+            memo.text = foodInfo.foodMemo
             memo.textColor = UIColor.black
         }
         
     }
     
     @IBAction func CompleteButton(_ sender: Any) {
-        if delegate != nil {
-            addFoodInfo.purchaseDate = buyDate.text!
-            addFoodInfo.expirationDate = endDate.text!
-            if memo.text == "메모를 입력하세요." {
-                addFoodInfo.memo = ""
-            }
-            else {
-                addFoodInfo.memo = memo.text
-            }
-            delegate?.didFoodEditDone(self, data: addFoodInfo)
+        if buyDate.text == "" {
+            Alert(title: "구매 날짜를 입력해 주세요.")
         }
-        
-        self.navigationController?.popViewController(animated: true)
+        else if endDate.text == "" {
+            Alert(title: "유통 기한을 입력해 주세요")
+        }
+        else {
+            if delegate != nil {
+                foodInfo.foodPurchaseDate = buyDate.text
+                foodInfo.foodExpirationDate = endDate.text
+                if memo.text == "메모를 입력하세요." {
+                    foodInfo.foodMemo = ""
+                }
+                else {
+                    foodInfo.foodMemo = memo.text
+                }
+                delegate?.didAddFoodEditDone(self, data: foodInfo)
+            }
+            
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     // 메모 입력 시작
@@ -97,6 +91,15 @@ class SetDetailFoodVC: UIViewController, UITextViewDelegate {
             memo.text = "메모를 입력하세요."
             memo.textColor = UIColor.lightGray
         }
+    }
+    
+    func Alert(title: String) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        
+        let defaultAction = UIAlertAction(title: "확인", style: .cancel)
+        
+        alert.addAction(defaultAction)
+        present(alert, animated: true, completion: nil)
     }
     
     // 날짜 Pickerview 생성
@@ -140,5 +143,3 @@ class SetDetailFoodVC: UIViewController, UITextViewDelegate {
     }
     
 }
-
-

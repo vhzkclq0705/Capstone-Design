@@ -9,7 +9,7 @@ import UIKit
 import AVKit
 import AVFoundation
 
-class startVC: UIViewController {
+class StartVC: UIViewController {
     var playerLooper: AVPlayerLooper!
     var playerLayer: AVPlayerLayer!
     var queuePlayer: AVQueuePlayer!
@@ -18,7 +18,6 @@ class startVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setAnimation()
     }
     

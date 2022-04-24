@@ -15,14 +15,8 @@ class AddSelectVC: UIViewController {
         super.viewDidLoad()
         
         textView.textColor = UIColor.white
+        textView.text = "재료를 추가할 방법을 \n 선택하세요."
         textView.font = UIFont(name: "TmonMonsoriBlack", size: 30)
-        
     }
-    
-    @IBAction func BackButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-
 }
 

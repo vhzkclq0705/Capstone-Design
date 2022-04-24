@@ -12,8 +12,8 @@ import UIKit
 class UserInfo {
     static let sharedUserInfo = UserInfo()
     
-    var token: String
-    var id: String
+    var token: String?
+    var id: String?
     var userInfoOpen: Bool
     var pushAlarm: Bool
     
@@ -26,33 +26,33 @@ class UserInfo {
 }
 
 // 식재료 정보
-struct FoodInfo {
+struct FoodInfo: Codable {
     static let sharedFoodInfo = FoodInfo()
     
-    var foodID: String          // 식재료 ID
-    var foodName: String        // 식재료 이름
-    var purchaseDate: String    // 식재료 구매(추가) 날짜
-    var expirationDate: String  // 식재료 유통기한
-    var memo: String            // 식재료 메모
+    var id: String?             // 식재료 ID
+    var foodName: String?           // 식재료 이름
+    var foodPurchaseDate: String?       // 식재료 구매(추가) 날짜
+    var foodExpirationDate: String?     // 식재료 유통기한
+    var foodMemo: String?               // 식재료 메모
     
-    var image: UIImage? {       // 식재료 아이콘
-        return UIImage(named: "\(foodName).jpg")
+    var image: UIImage? {           // 식재료 아이콘
+        return UIImage(named: "\(foodName ?? "미정").jpg")
     }
     
     init () {
-        self.foodID = ""
+        self.id = ""
         self.foodName = ""
-        self.purchaseDate = ""
-        self.expirationDate = ""
-        self.memo = ""
+        self.foodPurchaseDate = ""
+        self.foodExpirationDate = ""
+        self.foodMemo = ""
     }
     
-    init (foodID: String, foodName: String, purchaseDate: String, expirationDate: String, memo: String) {
-        self.foodID = foodID
+    init (id: String, foodName: String, foodPurchaseDate: String, foodExpirationDate: String, foodMemo: String) {
+        self.id = id
         self.foodName = foodName
-        self.purchaseDate = purchaseDate
-        self.expirationDate = expirationDate
-        self.memo = memo
+        self.foodPurchaseDate = foodPurchaseDate
+        self.foodExpirationDate = foodExpirationDate
+        self.foodMemo = foodMemo
     }
 }
 
@@ -62,13 +62,13 @@ class FoodModel {
     
     var FoodInfoList: [FoodInfo] = [    // 식재료 정보 리스트
         // 예시 7개
-        FoodInfo(foodID: "", foodName: "피망", purchaseDate: "2022-03-17", expirationDate: "2022-06-18", memo: "3개, 마트 구매"),
-        FoodInfo(foodID: "", foodName: "버섯", purchaseDate: "2022-03-17", expirationDate: "2022-05-10", memo: "2개, 마트 구매"),
-        FoodInfo(foodID: "", foodName: "양배추", purchaseDate: "2022-03-18", expirationDate: "2022-04-18", memo: "1개, 쿠팡이츠 배달"),
-        FoodInfo(foodID: "", foodName: "오렌지", purchaseDate: "2022-03-18", expirationDate: "2022-06-18", memo: "3개, 선물받음"),
-        FoodInfo(foodID: "", foodName: "당근", purchaseDate: "2022-03-18", expirationDate: "2022-06-18", memo: "3개, 유통기한 모름"),
-        FoodInfo(foodID: "", foodName: "무", purchaseDate: "2022-03-19", expirationDate: "2022-07-22", memo: "2개"),
-        FoodInfo(foodID: "", foodName: "감자", purchaseDate: "2022-03-20", expirationDate: "2022-09-20", memo: "3개")
+        FoodInfo(id: "", foodName: "피망", foodPurchaseDate: "2022-03-17", foodExpirationDate: "2022-06-18", foodMemo: "3개, 마트 구매"),
+        FoodInfo(id: "", foodName: "버섯", foodPurchaseDate: "2022-03-17", foodExpirationDate: "2022-05-10", foodMemo: "2개, 마트 구매"),
+        FoodInfo(id: "", foodName: "양배추", foodPurchaseDate: "2022-03-18", foodExpirationDate: "2022-04-18", foodMemo: "1개, 쿠팡이츠 배달"),
+        FoodInfo(id: "", foodName: "오렌지", foodPurchaseDate: "2022-03-18", foodExpirationDate: "2022-06-18", foodMemo: "3개, 선물받음"),
+        FoodInfo(id: "", foodName: "당근", foodPurchaseDate: "2022-03-18", foodExpirationDate: "2022-06-18", foodMemo: "3개, 유통기한 모름"),
+        FoodInfo(id: "", foodName: "무", foodPurchaseDate: "2022-03-19", foodExpirationDate: "2022-07-22", foodMemo: "2개"),
+        FoodInfo(id: "", foodName: "감자", foodPurchaseDate: "2022-03-20", foodExpirationDate: "2022-09-20", foodMemo: "3개")
     ]
     
     var countOfFoodList: Int {          // 식재료 개수 반환
@@ -86,11 +86,11 @@ class FriendsFoodModel {
     
     var FoodInfoList: [FoodInfo] = [    // 식재료 정보 리스트
         // 예시 5개
-        FoodInfo(foodID: "", foodName: "딸기", purchaseDate: "2022-03-17", expirationDate: "2022-06-18", memo: "3개, 마트 구매"),
-        FoodInfo(foodID: "", foodName: "양파", purchaseDate: "2022-03-17", expirationDate: "2022-05-10", memo: "2개, 마트 구매"),
-        FoodInfo(foodID: "", foodName: "마늘", purchaseDate: "2022-03-18", expirationDate: "2022-04-18", memo: "1개, 쿠팡이츠 배달"),
-        FoodInfo(foodID: "", foodName: "대파", purchaseDate: "2022-03-18", expirationDate: "2022-06-18", memo: "3개, 선물받음"),
-        FoodInfo(foodID: "", foodName: "양배추", purchaseDate: "2022-03-18", expirationDate: "2022-06-18", memo: "3개, 유통기한 모름"),
+        FoodInfo(id: "", foodName: "딸기", foodPurchaseDate: "2022-03-17", foodExpirationDate: "2022-06-18", foodMemo: "3개, 마트 구매"),
+        FoodInfo(id: "", foodName: "양파", foodPurchaseDate: "2022-03-17", foodExpirationDate: "2022-05-10", foodMemo: "2개, 마트 구매"),
+        FoodInfo(id: "", foodName: "마늘", foodPurchaseDate: "2022-03-18", foodExpirationDate: "2022-04-18", foodMemo: "1개, 쿠팡이츠 배달"),
+        FoodInfo(id: "", foodName: "대파", foodPurchaseDate: "2022-03-18", foodExpirationDate: "2022-06-18", foodMemo: "3개, 선물받음"),
+        FoodInfo(id: "", foodName: "양배추", foodPurchaseDate: "2022-03-18", foodExpirationDate: "2022-06-18", foodMemo: "3개, 유통기한 모름"),
     ]
     
     var countOfFoodList: Int {          // 식재료 개수 반환

@@ -7,23 +7,77 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18E258F39F8AB5FCE3DDD12B /* Pods_CapstoneDesign.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6719773D2A53A8162AAB0CFD /* Pods_CapstoneDesign.framework */; };
+		7641782E27C37B7D00F85BBD /* DetailFoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7641782D27C37B7D00F85BBD /* DetailFoodVC.swift */; };
+		764BFC7127E49E6400462C52 /* ShoppingListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764BFC7027E49E6400462C52 /* ShoppingListVC.swift */; };
+		764BFC7327E49E7200462C52 /* CalenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764BFC7227E49E7200462C52 /* CalenderVC.swift */; };
+		764BFC7527E49E8200462C52 /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764BFC7427E49E8200462C52 /* FriendsVC.swift */; };
+		764BFC7727E49E8E00462C52 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764BFC7627E49E8E00462C52 /* SettingVC.swift */; };
+		7668AA4027E61317001109A9 /* ShowFriendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7668AA3F27E61317001109A9 /* ShowFriendVC.swift */; };
 		766924E227969B0D00DB0795 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766924E127969B0D00DB0795 /* AppDelegate.swift */; };
 		766924E427969B0D00DB0795 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766924E327969B0D00DB0795 /* SceneDelegate.swift */; };
-		766924E627969B0D00DB0795 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766924E527969B0D00DB0795 /* ViewController.swift */; };
 		766924E927969B0D00DB0795 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 766924E727969B0D00DB0795 /* Main.storyboard */; };
 		766924EB27969B0E00DB0795 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 766924EA27969B0E00DB0795 /* Assets.xcassets */; };
 		766924EE27969B0E00DB0795 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 766924EC27969B0E00DB0795 /* LaunchScreen.storyboard */; };
+		766924F62798076200DB0795 /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766924F52798076200DB0795 /* StartVC.swift */; };
+		766925042798278000DB0795 /* LoginAni.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 766925032798278000DB0795 /* LoginAni.mp4 */; };
+		7669250A279AA1CD00DB0795 /* TMONBlack.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 76692508279AA1CC00DB0795 /* TMONBlack.ttf */; };
+		7669250B279AA1CD00DB0795 /* TMONTium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 76692509279AA1CC00DB0795 /* TMONTium.ttf */; };
+		7669250D279AA67100DB0795 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669250C279AA67000DB0795 /* Style.swift */; };
+		7687A72727E73F2800860FDC /* CorrectFoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7687A72627E73F2800860FDC /* CorrectFoodVC.swift */; };
+		768B90BD27E62E9500DA84BB /* DetailFriendsFoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768B90BC27E62E9500DA84BB /* DetailFriendsFoodVC.swift */; };
+		7690110727D732D100E48FA4 /* AddSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7690110627D732D100E48FA4 /* AddSelectVC.swift */; };
+		7690110927D8927E00E48FA4 /* SearchFoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7690110827D8927E00E48FA4 /* SearchFoodVC.swift */; };
+		769286EE279AC496003E66DC /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769286ED279AC495003E66DC /* LoginVC.swift */; };
+		769286F0279AC4B5003E66DC /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769286EF279AC4B5003E66DC /* RegisterVC.swift */; };
+		76C39CC527DCCC5500AB46F6 /* SetAddFoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C39CC427DCCC5500AB46F6 /* SetAddFoodVC.swift */; };
+		76C7DC6827E9CFA10049C0EA /* RecipeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C7DC6727E9CFA10049C0EA /* RecipeVC.swift */; };
+		76D2ADEB27E845AF00A99865 /* CorrectDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D2ADEA27E845AF00A99865 /* CorrectDetailVC.swift */; };
+		76D44289279C07F80023233B /* CustomsideMenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D44288279C07F80023233B /* CustomsideMenuNavigation.swift */; };
+		76D4428B279C08D20023233B /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4428A279C08D20023233B /* MainVC.swift */; };
+		76DAA1C527DF35B600D5C657 /* SetDetailFoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DAA1C427DF35B600D5C657 /* SetDetailFoodVC.swift */; };
+		76E6648C27EA2B1C0047188A /* WebKitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E6648B27EA2B1C0047188A /* WebKitVC.swift */; };
+		76EA1C6727F04B22005D8809 /* RecommendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EA1C6627F04B22005D8809 /* RecommendVC.swift */; };
+		76F4007227E31866001BDFAA /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F4007127E31866001BDFAA /* Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0DA6DA06F15FD6A809E609CA /* Pods-CapstoneDesign.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneDesign.release.xcconfig"; path = "Target Support Files/Pods-CapstoneDesign/Pods-CapstoneDesign.release.xcconfig"; sourceTree = "<group>"; };
+		6719773D2A53A8162AAB0CFD /* Pods_CapstoneDesign.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CapstoneDesign.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7641782D27C37B7D00F85BBD /* DetailFoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFoodVC.swift; sourceTree = "<group>"; };
+		764BFC7027E49E6400462C52 /* ShoppingListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListVC.swift; sourceTree = "<group>"; };
+		764BFC7227E49E7200462C52 /* CalenderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderVC.swift; sourceTree = "<group>"; };
+		764BFC7427E49E8200462C52 /* FriendsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
+		764BFC7627E49E8E00462C52 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
+		7668AA3F27E61317001109A9 /* ShowFriendVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowFriendVC.swift; sourceTree = "<group>"; };
 		766924DE27969B0D00DB0795 /* CapstoneDesign.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapstoneDesign.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		766924E127969B0D00DB0795 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		766924E327969B0D00DB0795 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		766924E527969B0D00DB0795 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		766924E827969B0D00DB0795 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		766924EA27969B0E00DB0795 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		766924ED27969B0E00DB0795 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		766924EF27969B0E00DB0795 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		766924F52798076200DB0795 /* StartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
+		766925032798278000DB0795 /* LoginAni.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = LoginAni.mp4; sourceTree = "<group>"; };
+		76692508279AA1CC00DB0795 /* TMONBlack.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TMONBlack.ttf; sourceTree = "<group>"; };
+		76692509279AA1CC00DB0795 /* TMONTium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TMONTium.ttf; sourceTree = "<group>"; };
+		7669250C279AA67000DB0795 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		7687A72627E73F2800860FDC /* CorrectFoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectFoodVC.swift; sourceTree = "<group>"; };
+		768B90BC27E62E9500DA84BB /* DetailFriendsFoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFriendsFoodVC.swift; sourceTree = "<group>"; };
+		7690110627D732D100E48FA4 /* AddSelectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSelectVC.swift; sourceTree = "<group>"; };
+		7690110827D8927E00E48FA4 /* SearchFoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodVC.swift; sourceTree = "<group>"; };
+		769286ED279AC495003E66DC /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		769286EF279AC4B5003E66DC /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		76C39CC427DCCC5500AB46F6 /* SetAddFoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAddFoodVC.swift; sourceTree = "<group>"; };
+		76C7DC6727E9CFA10049C0EA /* RecipeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeVC.swift; sourceTree = "<group>"; };
+		76D2ADEA27E845AF00A99865 /* CorrectDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectDetailVC.swift; sourceTree = "<group>"; };
+		76D44288279C07F80023233B /* CustomsideMenuNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomsideMenuNavigation.swift; sourceTree = "<group>"; };
+		76D4428A279C08D20023233B /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		76DAA1C427DF35B600D5C657 /* SetDetailFoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailFoodVC.swift; sourceTree = "<group>"; };
+		76E6648B27EA2B1C0047188A /* WebKitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitVC.swift; sourceTree = "<group>"; };
+		76EA1C6627F04B22005D8809 /* RecommendVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendVC.swift; sourceTree = "<group>"; };
+		76F4007127E31866001BDFAA /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		EA6D576D8839EE8824E46B34 /* Pods-CapstoneDesign.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneDesign.debug.xcconfig"; path = "Target Support Files/Pods-CapstoneDesign/Pods-CapstoneDesign.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +85,85 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18E258F39F8AB5FCE3DDD12B /* Pods_CapstoneDesign.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		049ED6F458F0CD0EE95B425A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EA6D576D8839EE8824E46B34 /* Pods-CapstoneDesign.debug.xcconfig */,
+				0DA6DA06F15FD6A809E609CA /* Pods-CapstoneDesign.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		2577E137FE3B01C23E7E2214 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6719773D2A53A8162AAB0CFD /* Pods_CapstoneDesign.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		764BFC6C27E49DBB00462C52 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				76D4428A279C08D20023233B /* MainVC.swift */,
+				7641782D27C37B7D00F85BBD /* DetailFoodVC.swift */,
+				76EA1C6627F04B22005D8809 /* RecommendVC.swift */,
+				76C7DC6727E9CFA10049C0EA /* RecipeVC.swift */,
+				76E6648B27EA2B1C0047188A /* WebKitVC.swift */,
+				76D2ADE927E8456F00A99865 /* Correct */,
+				764BFC6F27E49E3500462C52 /* SideMenu */,
+				764BFC6E27E49E0E00462C52 /* AddFood */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		764BFC6D27E49DD800462C52 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				769286ED279AC495003E66DC /* LoginVC.swift */,
+				769286EF279AC4B5003E66DC /* RegisterVC.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		764BFC6E27E49E0E00462C52 /* AddFood */ = {
+			isa = PBXGroup;
+			children = (
+				7690110627D732D100E48FA4 /* AddSelectVC.swift */,
+				7690110827D8927E00E48FA4 /* SearchFoodVC.swift */,
+				76C39CC427DCCC5500AB46F6 /* SetAddFoodVC.swift */,
+				76DAA1C427DF35B600D5C657 /* SetDetailFoodVC.swift */,
+			);
+			path = AddFood;
+			sourceTree = "<group>";
+		};
+		764BFC6F27E49E3500462C52 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				764BFC7027E49E6400462C52 /* ShoppingListVC.swift */,
+				764BFC7227E49E7200462C52 /* CalenderVC.swift */,
+				764BFC7427E49E8200462C52 /* FriendsVC.swift */,
+				7668AA3F27E61317001109A9 /* ShowFriendVC.swift */,
+				768B90BC27E62E9500DA84BB /* DetailFriendsFoodVC.swift */,
+				764BFC7627E49E8E00462C52 /* SettingVC.swift */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
 		766924D527969B0D00DB0795 = {
 			isa = PBXGroup;
 			children = (
 				766924E027969B0D00DB0795 /* CapstoneDesign */,
 				766924DF27969B0D00DB0795 /* Products */,
+				049ED6F458F0CD0EE95B425A /* Pods */,
+				2577E137FE3B01C23E7E2214 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +178,64 @@
 		766924E027969B0D00DB0795 /* CapstoneDesign */ = {
 			isa = PBXGroup;
 			children = (
-				766924E127969B0D00DB0795 /* AppDelegate.swift */,
-				766924E327969B0D00DB0795 /* SceneDelegate.swift */,
-				766924E527969B0D00DB0795 /* ViewController.swift */,
+				76F4007127E31866001BDFAA /* Models.swift */,
+				76C3DE2D2815545D002A3D61 /* Style */,
+				76D44287279C07A90023233B /* Delegates */,
+				76D44286279C07800023233B /* ViewControllers */,
+				76692507279AA1AD00DB0795 /* Fonts */,
 				766924E727969B0D00DB0795 /* Main.storyboard */,
 				766924EA27969B0E00DB0795 /* Assets.xcassets */,
+				766925032798278000DB0795 /* LoginAni.mp4 */,
 				766924EC27969B0E00DB0795 /* LaunchScreen.storyboard */,
 				766924EF27969B0E00DB0795 /* Info.plist */,
 			);
 			path = CapstoneDesign;
+			sourceTree = "<group>";
+		};
+		76692507279AA1AD00DB0795 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				76692508279AA1CC00DB0795 /* TMONBlack.ttf */,
+				76692509279AA1CC00DB0795 /* TMONTium.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		76C3DE2D2815545D002A3D61 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				7669250C279AA67000DB0795 /* Style.swift */,
+				76D44288279C07F80023233B /* CustomsideMenuNavigation.swift */,
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
+		76D2ADE927E8456F00A99865 /* Correct */ = {
+			isa = PBXGroup;
+			children = (
+				7687A72627E73F2800860FDC /* CorrectFoodVC.swift */,
+				76D2ADEA27E845AF00A99865 /* CorrectDetailVC.swift */,
+			);
+			path = Correct;
+			sourceTree = "<group>";
+		};
+		76D44286279C07800023233B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				766924F52798076200DB0795 /* StartVC.swift */,
+				764BFC6D27E49DD800462C52 /* Login */,
+				764BFC6C27E49DBB00462C52 /* Main */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		76D44287279C07A90023233B /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				766924E127969B0D00DB0795 /* AppDelegate.swift */,
+				766924E327969B0D00DB0795 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +245,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 766924F227969B0E00DB0795 /* Build configuration list for PBXNativeTarget "CapstoneDesign" */;
 			buildPhases = (
+				4A3D7755C65F7232FE9BFCFA /* [CP] Check Pods Manifest.lock */,
 				766924DA27969B0D00DB0795 /* Sources */,
 				766924DB27969B0D00DB0795 /* Frameworks */,
 				766924DC27969B0D00DB0795 /* Resources */,
+				A97B8EF17FFA9C3FCE746720 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -125,21 +298,88 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				766925042798278000DB0795 /* LoginAni.mp4 in Resources */,
 				766924EE27969B0E00DB0795 /* LaunchScreen.storyboard in Resources */,
 				766924EB27969B0E00DB0795 /* Assets.xcassets in Resources */,
 				766924E927969B0D00DB0795 /* Main.storyboard in Resources */,
+				7669250A279AA1CD00DB0795 /* TMONBlack.ttf in Resources */,
+				7669250B279AA1CD00DB0795 /* TMONTium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4A3D7755C65F7232FE9BFCFA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CapstoneDesign-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A97B8EF17FFA9C3FCE746720 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CapstoneDesign/Pods-CapstoneDesign-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CapstoneDesign/Pods-CapstoneDesign-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CapstoneDesign/Pods-CapstoneDesign-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		766924DA27969B0D00DB0795 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				766924E627969B0D00DB0795 /* ViewController.swift in Sources */,
+				766924F62798076200DB0795 /* StartVC.swift in Sources */,
+				764BFC7527E49E8200462C52 /* FriendsVC.swift in Sources */,
+				7669250D279AA67100DB0795 /* Style.swift in Sources */,
+				7690110727D732D100E48FA4 /* AddSelectVC.swift in Sources */,
+				769286EE279AC496003E66DC /* LoginVC.swift in Sources */,
+				7687A72727E73F2800860FDC /* CorrectFoodVC.swift in Sources */,
+				76E6648C27EA2B1C0047188A /* WebKitVC.swift in Sources */,
+				7641782E27C37B7D00F85BBD /* DetailFoodVC.swift in Sources */,
+				764BFC7127E49E6400462C52 /* ShoppingListVC.swift in Sources */,
+				76D44289279C07F80023233B /* CustomsideMenuNavigation.swift in Sources */,
+				769286F0279AC4B5003E66DC /* RegisterVC.swift in Sources */,
+				76EA1C6727F04B22005D8809 /* RecommendVC.swift in Sources */,
+				7668AA4027E61317001109A9 /* ShowFriendVC.swift in Sources */,
+				76DAA1C527DF35B600D5C657 /* SetDetailFoodVC.swift in Sources */,
+				76F4007227E31866001BDFAA /* Models.swift in Sources */,
+				76D2ADEB27E845AF00A99865 /* CorrectDetailVC.swift in Sources */,
+				7690110927D8927E00E48FA4 /* SearchFoodVC.swift in Sources */,
 				766924E227969B0D00DB0795 /* AppDelegate.swift in Sources */,
+				76D4428B279C08D20023233B /* MainVC.swift in Sources */,
+				76C39CC527DCCC5500AB46F6 /* SetAddFoodVC.swift in Sources */,
+				764BFC7727E49E8E00462C52 /* SettingVC.swift in Sources */,
+				768B90BD27E62E9500DA84BB /* DetailFriendsFoodVC.swift in Sources */,
+				76C7DC6827E9CFA10049C0EA /* RecipeVC.swift in Sources */,
+				764BFC7327E49E7200462C52 /* CalenderVC.swift in Sources */,
 				766924E427969B0D00DB0795 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,6 +524,7 @@
 		};
 		766924F327969B0E00DB0795 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA6D576D8839EE8824E46B34 /* Pods-CapstoneDesign.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -312,6 +553,7 @@
 		};
 		766924F427969B0E00DB0795 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0DA6DA06F15FD6A809E609CA /* Pods-CapstoneDesign.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
