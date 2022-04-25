@@ -1,5 +1,5 @@
 //
-//  CalenderVC.swift
+//  CalendarVC.swift
 //  CapstoneDesign
 //
 //  Created by 권오준 on 2022/03/18.
@@ -8,7 +8,7 @@
 import UIKit
 import FSCalendar
 
-class CalenderVC: UIViewController {
+class CalendarVC: UIViewController {
 
     @IBOutlet weak var calendarView: FSCalendar!
     @IBOutlet weak var detailView: UIView!
@@ -38,27 +38,23 @@ class CalenderVC: UIViewController {
     // FoodModel에 있는 재료들의 날짜를 가져옴
     func AddFoodDates() {
         for i in 0...foodModel.countOfFoodList - 1 {
-            guard let pDate = foodModel.FoodInfoList[i].foodPurchaseDate else { return }
+            let pDate = foodModel.FoodInfoList[i].foodPurchaseDate
             purchaseDates.append(formatter.date(from: pDate)!)
             
-            guard let eDate = foodModel.FoodInfoList[i].foodExpirationDate else { return }
+            let eDate = foodModel.FoodInfoList[i].foodExpirationDate
             expirationDates.append(formatter.date(from: eDate)!)
         }
     }
-    
-    @IBAction func BackButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
 }
 
-extension CalenderVC: UITableViewDelegate, UITableViewDataSource {
+extension CalendarVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return showPurchaseFoods.count + showExpirationFoods.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? CalenderCustomCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? CalendarCustomCell else { return UITableViewCell() }
         
         if showExpirationFoods.isEmpty {
             cell.imgView.image = showPurchaseFoods[indexPath.row].image
@@ -77,7 +73,7 @@ extension CalenderVC: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-extension CalenderVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
+extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     // 구매 날짜, 유통기한 있을 시 이벤트 표시
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         if self.purchaseDates.contains(date) || self.expirationDates.contains(date){
@@ -110,7 +106,7 @@ extension CalenderVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
     }
 }
 
-class CalenderCustomCell: UITableViewCell {
+class CalendarCustomCell: UITableViewCell {
     
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!

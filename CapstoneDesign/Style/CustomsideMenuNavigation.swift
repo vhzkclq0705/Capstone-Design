@@ -17,5 +17,7 @@ class CustomsideMenuNavigation: SideMenuNavigationController {
         self.leftSide = true
     }
     
-
+    /*override func viewWillDisappear(_ animated: Bool) {
+        self.menuWidth = self.view.frame.width
+    }*/
 }

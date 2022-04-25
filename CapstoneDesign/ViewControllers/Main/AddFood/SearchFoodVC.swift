@@ -14,6 +14,7 @@ class SearchFoodVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var addButton: ButtonStyle!
     @IBOutlet weak var titleLable: UILabel!
+    @IBOutlet weak var compleButton: ButtonStyle!
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -39,7 +40,7 @@ class SearchFoodVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         titleLable.isHidden = true
         searchBar.layer.borderWidth = 1
         searchBar.layer.borderColor = UIColor.white.cgColor
-
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -97,6 +98,10 @@ class SearchFoodVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         // 우상단 추가된 재료의 개수 표시
         addButton.titleLabel?.text = "추가하기(\(selectedFoodList.count))"
         
+        if selectedFoodList.count > 0 {
+            compleButton.isEnabled = true
+        }
+        
         print(selectedFoodList)
         
         searchBar.searchTextField.endEditing(true)
@@ -108,21 +113,14 @@ class SearchFoodVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     @IBAction func CompleteButton(_ sender: Any) {
         if changedList {
-            guard let vc = storyboard?.instantiateViewController(withIdentifier: "SetAddFoodVC") as? SetAddFoodVC else { return }
+           guard let vc = storyboard?.instantiateViewController(withIdentifier: "SetAddFoodVC") as? SetAddFoodVC else { return }
             vc.resultFoodList = selectedFoodList
             
             self.navigationController?.pushViewController(vc, animated: true)
             changedList = false
         }
         else {
-            let alert = UIAlertController(title: "선택된 재료를 확인하세요", message: nil, preferredStyle: .alert)
-            
-            let defaultAction = UIAlertAction(title: "확인", style: .cancel) {_ in
-                self.changeState()
-            }
-            
-            alert.addAction(defaultAction)
-            present(alert, animated: true, completion: nil)
+            Alert(title: "선택된 재료를 확인해 주세요.")
         }
         
     }
@@ -143,6 +141,16 @@ class SearchFoodVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         tableView.reloadData()
     }
     
+    func Alert(title: String) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        
+        let defaultAction = UIAlertAction(title: "확인", style: .cancel) {_ in
+            self.changeState()
+        }
+        
+        alert.addAction(defaultAction)
+        present(alert, animated: true, completion: nil)
+    }
 }
 
 extension SearchFoodVC: UISearchBarDelegate {

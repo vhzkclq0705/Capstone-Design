@@ -53,11 +53,6 @@ class ShoppingListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         return cell
     }
-    
-    @IBAction func BackButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-
 }
 
 extension ShoppingListVC: ListButtonDelegate {
@@ -78,7 +73,6 @@ extension ShoppingListVC: ListButtonDelegate {
         
         tableView.reloadData()
     }
-    
 }
 
 // 장바구니 리스트 모델

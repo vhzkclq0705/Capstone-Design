@@ -91,7 +91,6 @@ extension RegisterVC {
         }
     }
     
-    // 알림 띄우기
     func Alert(title: String) {
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         

@@ -10,9 +10,9 @@
 		18E258F39F8AB5FCE3DDD12B /* Pods_CapstoneDesign.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6719773D2A53A8162AAB0CFD /* Pods_CapstoneDesign.framework */; };
 		7641782E27C37B7D00F85BBD /* DetailFoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7641782D27C37B7D00F85BBD /* DetailFoodVC.swift */; };
 		764BFC7127E49E6400462C52 /* ShoppingListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764BFC7027E49E6400462C52 /* ShoppingListVC.swift */; };
-		764BFC7327E49E7200462C52 /* CalenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764BFC7227E49E7200462C52 /* CalenderVC.swift */; };
+		764BFC7327E49E7200462C52 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764BFC7227E49E7200462C52 /* CalendarVC.swift */; };
 		764BFC7527E49E8200462C52 /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764BFC7427E49E8200462C52 /* FriendsVC.swift */; };
-		764BFC7727E49E8E00462C52 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764BFC7627E49E8E00462C52 /* SettingVC.swift */; };
+		764BFC7727E49E8E00462C52 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764BFC7627E49E8E00462C52 /* SettingsVC.swift */; };
 		7668AA4027E61317001109A9 /* ShowFriendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7668AA3F27E61317001109A9 /* ShowFriendVC.swift */; };
 		766924E227969B0D00DB0795 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766924E127969B0D00DB0795 /* AppDelegate.swift */; };
 		766924E427969B0D00DB0795 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766924E327969B0D00DB0795 /* SceneDelegate.swift */; };
@@ -31,6 +31,7 @@
 		769286EE279AC496003E66DC /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769286ED279AC495003E66DC /* LoginVC.swift */; };
 		769286F0279AC4B5003E66DC /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769286EF279AC4B5003E66DC /* RegisterVC.swift */; };
 		76C39CC527DCCC5500AB46F6 /* SetAddFoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C39CC427DCCC5500AB46F6 /* SetAddFoodVC.swift */; };
+		76C3DE2F2815773D002A3D61 /* SelectMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C3DE2E2815773D002A3D61 /* SelectMenuVC.swift */; };
 		76C7DC6827E9CFA10049C0EA /* RecipeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C7DC6727E9CFA10049C0EA /* RecipeVC.swift */; };
 		76D2ADEB27E845AF00A99865 /* CorrectDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D2ADEA27E845AF00A99865 /* CorrectDetailVC.swift */; };
 		76D44289279C07F80023233B /* CustomsideMenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D44288279C07F80023233B /* CustomsideMenuNavigation.swift */; };
@@ -46,9 +47,9 @@
 		6719773D2A53A8162AAB0CFD /* Pods_CapstoneDesign.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CapstoneDesign.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7641782D27C37B7D00F85BBD /* DetailFoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFoodVC.swift; sourceTree = "<group>"; };
 		764BFC7027E49E6400462C52 /* ShoppingListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListVC.swift; sourceTree = "<group>"; };
-		764BFC7227E49E7200462C52 /* CalenderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderVC.swift; sourceTree = "<group>"; };
+		764BFC7227E49E7200462C52 /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
 		764BFC7427E49E8200462C52 /* FriendsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
-		764BFC7627E49E8E00462C52 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
+		764BFC7627E49E8E00462C52 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		7668AA3F27E61317001109A9 /* ShowFriendVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowFriendVC.swift; sourceTree = "<group>"; };
 		766924DE27969B0D00DB0795 /* CapstoneDesign.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapstoneDesign.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		766924E127969B0D00DB0795 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +70,7 @@
 		769286ED279AC495003E66DC /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		769286EF279AC4B5003E66DC /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		76C39CC427DCCC5500AB46F6 /* SetAddFoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAddFoodVC.swift; sourceTree = "<group>"; };
+		76C3DE2E2815773D002A3D61 /* SelectMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMenuVC.swift; sourceTree = "<group>"; };
 		76C7DC6727E9CFA10049C0EA /* RecipeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeVC.swift; sourceTree = "<group>"; };
 		76D2ADEA27E845AF00A99865 /* CorrectDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectDetailVC.swift; sourceTree = "<group>"; };
 		76D44288279C07F80023233B /* CustomsideMenuNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomsideMenuNavigation.swift; sourceTree = "<group>"; };
@@ -147,12 +149,13 @@
 		764BFC6F27E49E3500462C52 /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
+				76C3DE2E2815773D002A3D61 /* SelectMenuVC.swift */,
 				764BFC7027E49E6400462C52 /* ShoppingListVC.swift */,
-				764BFC7227E49E7200462C52 /* CalenderVC.swift */,
+				764BFC7227E49E7200462C52 /* CalendarVC.swift */,
 				764BFC7427E49E8200462C52 /* FriendsVC.swift */,
 				7668AA3F27E61317001109A9 /* ShowFriendVC.swift */,
 				768B90BC27E62E9500DA84BB /* DetailFriendsFoodVC.swift */,
-				764BFC7627E49E8E00462C52 /* SettingVC.swift */,
+				764BFC7627E49E8E00462C52 /* SettingsVC.swift */,
 			);
 			path = SideMenu;
 			sourceTree = "<group>";
@@ -373,13 +376,14 @@
 				76F4007227E31866001BDFAA /* Models.swift in Sources */,
 				76D2ADEB27E845AF00A99865 /* CorrectDetailVC.swift in Sources */,
 				7690110927D8927E00E48FA4 /* SearchFoodVC.swift in Sources */,
+				76C3DE2F2815773D002A3D61 /* SelectMenuVC.swift in Sources */,
 				766924E227969B0D00DB0795 /* AppDelegate.swift in Sources */,
 				76D4428B279C08D20023233B /* MainVC.swift in Sources */,
 				76C39CC527DCCC5500AB46F6 /* SetAddFoodVC.swift in Sources */,
-				764BFC7727E49E8E00462C52 /* SettingVC.swift in Sources */,
+				764BFC7727E49E8E00462C52 /* SettingsVC.swift in Sources */,
 				768B90BD27E62E9500DA84BB /* DetailFriendsFoodVC.swift in Sources */,
 				76C7DC6827E9CFA10049C0EA /* RecipeVC.swift in Sources */,
-				764BFC7327E49E7200462C52 /* CalenderVC.swift in Sources */,
+				764BFC7327E49E7200462C52 /* CalendarVC.swift in Sources */,
 				766924E427969B0D00DB0795 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

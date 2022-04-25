@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class MainVC: UIViewController {
 
@@ -19,24 +20,15 @@ class MainVC: UIViewController {
     @IBOutlet weak var deleteStackView: UIStackView!
     @IBOutlet weak var clearView: UIView!
     
-    let userInfo = UserInfo.sharedUserInfo
     var foodModel = FoodModel.sharedFoodModel
     var deleteFoodIndexList = [Int]()
     var isDeleting = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = SetBackButton()
-
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        collectionView.reloadData()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        view.layer.opacity = 1
     }
 }
 
@@ -45,10 +37,14 @@ extension MainVC: UICollectionViewDataSource, UICollectionViewDelegate {
         if foodModel.countOfFoodList == 0 {
             clearView.isHidden = false
         }
+        else {
+            clearView.isHidden = true
+        }
         return foodModel.countOfFoodList
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        collectionView.reloadData()
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? FoodCell else { return UICollectionViewCell() }
         
         let foodInfo = foodModel.foodInfo(at: indexPath.item)
@@ -139,7 +135,7 @@ extension MainVC {  // Action funcs + Custom funcs
     
     @IBAction func RecommendButton(_ sender: Any) {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "RecommendVC") as? RecommendVC else { return }
-        vc.foodName = foodModel.FoodInfoList.map { $0.foodName! }
+        vc.foodName = foodModel.FoodInfoList.map { $0.foodName }
         
         self.navigationController?.pushViewController(vc, animated: true)
     }

@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Alamofire
 
 class SetAddFoodVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var parameters = [[String: String]]()
     var resultFoodList = [String]()
     var foodModel = FoodModel.sharedFoodModel
     var addFoodModel = AddFoodModel()
@@ -50,13 +52,12 @@ class SetAddFoodVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     
     @IBAction func CompleteButton(_ sender: Any) {
-        // 서버로 addFoodModel.FoodInfoList 보내기
         var cnt = 0
         for i in 0...addFoodModel.countOfFoodList - 1 {
             if addFoodModel.FoodInfoList[i].foodPurchaseDate == "" ||
                 addFoodModel.FoodInfoList[i].foodExpirationDate == "" ||
                 addFoodModel.FoodInfoList[i].foodMemo == "" {
-                let alert = UIAlertController(title: "식재료 \(addFoodModel.FoodInfoList[i].foodName!)의 정보를 입력해 주세요.", message: nil, preferredStyle: .alert)
+                let alert = UIAlertController(title: "식재료 '\(addFoodModel.FoodInfoList[i].foodName)'의 정보를 입력해 주세요.", message: nil, preferredStyle: .alert)
                 
                 let defaultAction = UIAlertAction(title: "확인", style: .cancel)
                 
@@ -68,11 +69,52 @@ class SetAddFoodVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             }
         }
         if cnt == 0 {
-            for i in 0...addFoodModel.countOfFoodList - 1 {
-                foodModel.FoodInfoList.append(addFoodModel.FoodInfoList[i])
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                // loading Indicator 추가
+                
+                for i in 0...self.addFoodModel.countOfFoodList - 1 {
+                    let addFoodInfo = ["foodName": self.addFoodModel.FoodInfoList[i].foodName,
+                                       "foodPurchaseDate": self.addFoodModel.FoodInfoList[i].foodPurchaseDate,
+                                       "foodExpirationDate": self.addFoodModel.FoodInfoList[i].foodExpirationDate,
+                                       "foodMemo": self.addFoodModel.FoodInfoList[i].foodMemo]
+                    self.parameters.append(addFoodInfo)
+                }
+                self.AddFoodPost()
             }
-            
             self.navigationController?.popToRootViewController(animated: true)
+        }
+    }
+    
+    func AddFoodPost() {
+        let url = "http://3.38.150.193:3000/food/addFood"
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.timeoutInterval = 10
+
+        // httpBody 에 parameters 추가
+        do {
+            try request.httpBody = JSONSerialization.data(withJSONObject: self.parameters)
+        } catch {
+            print("http Body Error")
+        }
+            
+        AF.request(request).responseJSON { (response) in
+            switch response.result {
+            case .success(let json):
+                if let jsonData = json as? NSDictionary {
+                    if let code = jsonData["code"] as? Int {
+                        if code == 200 {
+                            for i in 0...self.addFoodModel.countOfFoodList - 1 {
+                                self.foodModel.FoodInfoList.append(self.addFoodModel.FoodInfoList[i])
+                            }
+                        }
+                    }
+                }
+                
+            case .failure(let error):
+                print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
+            }
         }
     }
     

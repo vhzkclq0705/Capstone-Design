@@ -14,16 +14,25 @@ class LoginVC: UIViewController {
     @IBOutlet weak var inputPW: UITextField!
     
     var userInfo = UserInfo.sharedUserInfo
+    var foodModel = FoodModel.sharedFoodModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     @IBAction func CompleteLoginButton(_ sender: Any) {
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainNaviVC") else { return }
+        //guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainNaviVC") else { return }
         
-        self.present(vc, animated: true, completion: nil)
-        //LoginInfoPost()
+        //self.present(vc, animated: true, completion: nil)
+        if inputID.text == "" {
+            Alert(title: "이메일을 입력해 주세요.")
+        }
+        else if inputPW.text == "" {
+            Alert(title: "비밀번호를 입력해 주세요.")
+        }
+        else {
+            LoginInfoPost()
+        }
     }
     
 }
@@ -56,11 +65,8 @@ extension LoginVC {
                             self.Alert(title: "이메일 혹은 비밀번호가 잘못되었습니다.")
                         }
                         else if code == 200 {
+                            self.FoodInfoGet()
                             self.userInfo.id = self.inputID.text!
-                            //토큰 값 userInfo에 저장
-                            if let token = jsonData["data"] as? NSDictionary {
-                                self.userInfo.token = token["access_token"] as? String
-                            }
                             guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainNaviVC") else { return }
                             
                             self.present(vc, animated: true, completion: nil)
@@ -72,6 +78,39 @@ extension LoginVC {
                 self.Alert(title: "서버에 연결할 수 없습니다.")
             }
         }
+    }
+    
+    func FoodInfoGet() {
+        let url = "http://3.38.150.193:3000/food/config"
+        AF.request(url,
+                   method: .get,
+                   parameters: nil,
+                   encoding: JSONEncoding.default,
+                   headers: ["Content-Type":"application/json;charset=utf-8", "Accept":"application/json"])
+            .validate(statusCode: 200..<300)
+            .responseJSON { (response) in
+                switch response.result {
+                case .success(let json):
+                    if let data = json as? NSDictionary {
+                        if let food = data["resultUser"] as? [NSDictionary] {
+                            do {
+                                let foodData = try JSONSerialization.data(withJSONObject: food, options: .prettyPrinted)
+                                
+                                let dataModel = try JSONDecoder().decode([FoodInfo].self, from: foodData)
+                                if dataModel.count > 1 {
+                                    for i in 0...dataModel.count - 1 {
+                                        self.foodModel.FoodInfoList.append(dataModel[i])
+                                    }
+                                }
+                            } catch {
+                                print(error.localizedDescription)
+                            }
+                        }
+                    }
+                case .failure(let error):
+                    print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
+                }
+            }
     }
     
     // 알람 함수

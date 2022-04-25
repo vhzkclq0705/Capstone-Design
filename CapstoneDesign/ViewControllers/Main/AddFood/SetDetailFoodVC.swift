@@ -62,8 +62,8 @@ class SetDetailFoodVC: UIViewController, UITextViewDelegate {
         }
         else {
             if delegate != nil {
-                foodInfo.foodPurchaseDate = buyDate.text
-                foodInfo.foodExpirationDate = endDate.text
+                foodInfo.foodPurchaseDate = buyDate.text!
+                foodInfo.foodExpirationDate = endDate.text!
                 if memo.text == "메모를 입력하세요." {
                     foodInfo.foodMemo = ""
                 }
