@@ -10,14 +10,19 @@ import UIKit
 class ShowFriendVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var name: UILabel!
     
     let foodModel = FriendsFoodModel.sharedFriendsFoodModel
     var friendName: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        name.text = friendName ?? ""
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = SetBackButton()
+        self.navigationItem.title = friendName
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        foodModel.FoodInfoList.removeAll()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -65,9 +70,6 @@ class ShowFriendVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         return size
     }
     
-    @IBAction func BackButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
     
 }
 
@@ -80,7 +82,7 @@ class FriendsFoodCell: UICollectionViewCell {
     var foodEDate: String!
     var foodMemo: String!
     
-    func FoodUpdate(info: FoodInfo) {
+    func FoodUpdate(info: FriendFoodInfo) {
         imgView.image = info.image
         nameLabel.text = info.foodName
         foodName = info.foodName

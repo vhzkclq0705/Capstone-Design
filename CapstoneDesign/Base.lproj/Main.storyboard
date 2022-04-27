@@ -197,20 +197,6 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <view key="backgroundView" hidden="YES" contentMode="scaleToFill" id="5oV-qQ-WkK">
-                                    <rect key="frame" x="0.0" y="0.0" width="358" height="610"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="재료를 추가해 주세요." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ckj-Nd-XvN">
-                                            <rect key="frame" x="8" y="19" width="342" height="83"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="TmonMonsoriBlack" family="TmonMonsori" pointSize="25"/>
-                                            <color key="textColor" name="Hgray"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                </view>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="EXX-KW-ggD" customClass="FoodCell" customModule="CapstoneDesign" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
@@ -254,7 +240,6 @@
                                             <outlet property="checkView" destination="oQZ-bP-Y2j" id="SxR-5r-fyY"/>
                                             <outlet property="imgView" destination="han-Yy-urK" id="oQE-ti-vLd"/>
                                             <outlet property="nameLabel" destination="Uas-sg-gy6" id="gyG-XT-iJq"/>
-                                            <segue destination="0is-K4-VfF" kind="presentation" identifier="showDetailFood" id="ZCD-Ss-jJf"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -359,6 +344,13 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="재료를 추가해 주세요." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ckj-Nd-XvN">
+                                <rect key="frame" x="16" y="150" width="358" height="83"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="TmonMonsoriBlack" family="TmonMonsori" pointSize="25"/>
+                                <color key="textColor" name="Hgray"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Jes-rO-d2W"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -414,7 +406,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addDeleteButtons" destination="tmy-2c-p4r" id="Lve-ge-Suh"/>
-                        <outlet property="clearView" destination="5oV-qQ-WkK" id="RuH-1h-Pb5"/>
+                        <outlet property="clearLabel" destination="ckj-Nd-XvN" id="QZH-pw-Gbd"/>
                         <outlet property="collectionView" destination="eFs-TF-rY8" id="Umd-sK-S8e"/>
                         <outlet property="completeDeleteButton" destination="kDY-P4-rcy" id="egW-hx-ZSf"/>
                         <outlet property="correctButton" destination="OJp-bp-ZfE" id="Onm-fb-LVR"/>
@@ -422,11 +414,12 @@
                         <outlet property="deleteStackView" destination="ejp-ZI-OId" id="KAE-2F-YB4"/>
                         <outlet property="recommendButton" destination="Wi7-cB-bNI" id="qqJ-Lf-o3k"/>
                         <outlet property="sideMenuButton" destination="v9D-2M-D94" id="ZU5-ZB-zHw"/>
+                        <segue destination="0is-K4-VfF" kind="presentation" identifier="showDetailFood" id="1RI-wx-ZSp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tgf-5Z-ti2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-589.23076923076917" y="2626.7772511848339"/>
+            <point key="canvasLocation" x="-589.23076923076917" y="2599.7630331753553"/>
         </scene>
         <!--Detail FoodVC-->
         <scene sceneID="yyq-Sn-KVo">
@@ -1602,7 +1595,7 @@
                                 </connections>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oq7-yK-MuU">
-                                <rect key="frame" x="0.0" y="475" width="390" height="335"/>
+                                <rect key="frame" x="0.0" y="444" width="390" height="366"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IdI-Dc-xkf">
                                         <rect key="frame" x="16" y="43" width="358" height="272"/>
@@ -1616,30 +1609,22 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="358" height="43.666667938232422"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hX6-An-J9f">
-                                                            <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nlt-fn-w4s">
-                                                            <rect key="frame" x="52" y="0.0" width="240" height="44"/>
+                                                            <rect key="frame" x="168" y="0.0" width="170" height="44"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="TmonMonsoriBlack" family="TmonMonsori" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="구매" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PSc-7A-VqX">
-                                                            <rect key="frame" x="300" y="0.0" width="58" height="44"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hX6-An-J9f">
+                                                            <rect key="frame" x="103" y="0.0" width="44" height="44"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" name="TmonMonsoriBlack" family="TmonMonsori" pointSize="15"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        </imageView>
                                                     </subviews>
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="imgView" destination="hX6-An-J9f" id="Dj3-lC-t0m"/>
                                                     <outlet property="nameLabel" destination="Nlt-fn-w4s" id="qJ2-Q4-on4"/>
-                                                    <outlet property="state" destination="PSc-7A-VqX" id="0zb-Dp-Irf"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -1648,7 +1633,7 @@
                                             <outlet property="delegate" destination="OH2-VJ-vUL" id="9cX-Pj-Ibg"/>
                                         </connections>
                                     </tableView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0000년 00월 00일 0요일" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Z4-rn-EF7">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0000년 00월 00일" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Z4-rn-EF7">
                                         <rect key="frame" x="24" y="0.0" width="342" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="TmonMonsoriBlack" family="TmonMonsori" pointSize="20"/>
@@ -1663,7 +1648,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="SW7-dc-wY0" firstAttribute="trailing" secondItem="oq7-yK-MuU" secondAttribute="trailing" id="1Ta-vH-nJv"/>
-                            <constraint firstItem="oq7-yK-MuU" firstAttribute="top" secondItem="SW7-dc-wY0" secondAttribute="top" constant="431" id="8k3-Hi-0mp"/>
+                            <constraint firstItem="oq7-yK-MuU" firstAttribute="top" secondItem="SW7-dc-wY0" secondAttribute="top" constant="400" id="8k3-Hi-0mp"/>
                             <constraint firstItem="oq7-yK-MuU" firstAttribute="leading" secondItem="SW7-dc-wY0" secondAttribute="leading" id="9Nm-zG-9sg"/>
                             <constraint firstItem="SW7-dc-wY0" firstAttribute="bottom" secondItem="QlL-HY-FO1" secondAttribute="bottom" constant="323" id="GDy-vX-fhU"/>
                             <constraint firstItem="SW7-dc-wY0" firstAttribute="trailing" secondItem="QlL-HY-FO1" secondAttribute="trailing" id="Ig8-ZA-uyc"/>
@@ -1830,9 +1815,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="LLf-Ag-XQk" kind="showDetail" identifier="showFriends" id="loR-6S-N57"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -1862,7 +1844,7 @@
             </objects>
             <point key="canvasLocation" x="4246" y="1969"/>
         </scene>
-        <!--Show FriendVC-->
+        <!--Title-->
         <scene sceneID="HkS-an-NPN">
             <objects>
                 <viewController storyboardIdentifier="ShowFriendVC" modalPresentationStyle="fullScreen" id="LLf-Ag-XQk" customClass="ShowFriendVC" customModule="CapstoneDesign" customModuleProvider="target" sceneMemberID="viewController">
@@ -1870,22 +1852,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Ip-QY-7k8">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="90"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="닉네임" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLf-J3-3Vc">
-                                        <rect key="frame" x="51" y="44" width="288" height="41"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="TmonMonsoriBlack" family="TmonMonsori" pointSize="20"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" name="lightSky"/>
-                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="h9Q-ZP-LU1">
-                                <rect key="frame" x="16" y="102" width="358" height="620"/>
+                                <rect key="frame" x="16" y="54" width="358" height="756"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="t1J-dY-Hd1">
                                     <size key="itemSize" width="128" height="128"/>
@@ -1930,20 +1898,20 @@
                         <viewLayoutGuide key="safeArea" id="i79-GV-jb4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="i79-GV-jb4" firstAttribute="bottom" secondItem="h9Q-ZP-LU1" secondAttribute="bottom" constant="88" id="5jI-co-HVd"/>
+                            <constraint firstItem="i79-GV-jb4" firstAttribute="bottom" secondItem="h9Q-ZP-LU1" secondAttribute="bottom" id="5jI-co-HVd"/>
                             <constraint firstItem="i79-GV-jb4" firstAttribute="trailing" secondItem="h9Q-ZP-LU1" secondAttribute="trailing" constant="16" id="ffm-ff-SuD"/>
                             <constraint firstItem="h9Q-ZP-LU1" firstAttribute="leading" secondItem="i79-GV-jb4" secondAttribute="leading" constant="16" id="hiV-i6-P1H"/>
-                            <constraint firstItem="h9Q-ZP-LU1" firstAttribute="top" secondItem="i79-GV-jb4" secondAttribute="top" constant="58" id="x80-tC-6h4"/>
+                            <constraint firstItem="h9Q-ZP-LU1" firstAttribute="top" secondItem="i79-GV-jb4" secondAttribute="top" constant="10" id="x80-tC-6h4"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="8I2-NB-7gx"/>
                     <connections>
                         <outlet property="collectionView" destination="h9Q-ZP-LU1" id="ujy-ou-dvr"/>
-                        <outlet property="name" destination="yLf-J3-3Vc" id="Owy-ib-ZiJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hd0-Iw-MYR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5175" y="1969"/>
+            <point key="canvasLocation" x="5173.8461538461534" y="1968.4834123222747"/>
         </scene>
         <!--Detail Friends FoodVC-->
         <scene sceneID="z6I-nt-wOA">
@@ -2064,7 +2032,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jQ6-eY-cO4">
-                                <rect key="frame" x="16" y="144" width="358" height="566"/>
+                                <rect key="frame" x="16" y="140" width="358" height="570"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="duc-3p-aEG" customClass="CorrectFoodCell" customModule="CapstoneDesign" customModuleProvider="target">
@@ -2117,7 +2085,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="수정할 재료를 선택하세요." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFm-FH-47z">
-                                <rect key="frame" x="16" y="113" width="358" height="21"/>
+                                <rect key="frame" x="16" y="94" width="358" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="TmonMonsoriBlack" family="TmonMonsori" pointSize="20"/>
                                 <color key="textColor" name="Sky"/>
@@ -2129,7 +2097,7 @@
                         <constraints>
                             <constraint firstItem="FbJ-6I-1kP" firstAttribute="bottom" secondItem="jQ6-eY-cO4" secondAttribute="bottom" constant="51" id="0gd-EE-zmv"/>
                             <constraint firstItem="jQ6-eY-cO4" firstAttribute="leading" secondItem="FbJ-6I-1kP" secondAttribute="leading" constant="16" id="7oi-w3-SvK"/>
-                            <constraint firstItem="jQ6-eY-cO4" firstAttribute="top" secondItem="FbJ-6I-1kP" secondAttribute="top" constant="100" id="Qfs-cs-5eG"/>
+                            <constraint firstItem="jQ6-eY-cO4" firstAttribute="top" secondItem="FbJ-6I-1kP" secondAttribute="top" constant="96" id="Qfs-cs-5eG"/>
                             <constraint firstItem="FbJ-6I-1kP" firstAttribute="trailing" secondItem="jQ6-eY-cO4" secondAttribute="trailing" constant="16" id="Rvg-gh-ktE"/>
                         </constraints>
                     </view>

@@ -17,11 +17,8 @@ class CalendarVC: UIViewController {
     
     let foodModel = FoodModel.sharedFoodModel
     let formatter = DateFormatter()
-    var purchaseDates = [Date]()
     var expirationDates = [Date]()
     
-    // tableView에 표시할 내용을 담은 list
-    var showPurchaseFoods = [FoodInfo]()
     var showExpirationFoods = [FoodInfo]()
     
     override func viewDidLoad() {
@@ -38,9 +35,6 @@ class CalendarVC: UIViewController {
     // FoodModel에 있는 재료들의 날짜를 가져옴
     func AddFoodDates() {
         for i in 0...foodModel.countOfFoodList - 1 {
-            let pDate = foodModel.FoodInfoList[i].foodPurchaseDate
-            purchaseDates.append(formatter.date(from: pDate)!)
-            
             let eDate = foodModel.FoodInfoList[i].foodExpirationDate
             expirationDates.append(formatter.date(from: eDate)!)
         }
@@ -48,35 +42,23 @@ class CalendarVC: UIViewController {
 }
 
 extension CalendarVC: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return showPurchaseFoods.count + showExpirationFoods.count
+        return showExpirationFoods.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? CalendarCustomCell else { return UITableViewCell() }
         
-        if showExpirationFoods.isEmpty {
-            cell.imgView.image = showPurchaseFoods[indexPath.row].image
-            cell.nameLabel.text = showPurchaseFoods[indexPath.row].foodName
-            cell.state.text = "구매"
-        }
-        else {
-            cell.imgView.image = showExpirationFoods[indexPath.row].image
-            cell.nameLabel.text = showExpirationFoods[indexPath.row].foodName
-            cell.state.text = "까지"
-            showExpirationFoods.removeFirst()
-        }
+        cell.FoodUpdate(info: showExpirationFoods[indexPath.row])
         
         return cell
     }
-    
 }
 
 extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     // 구매 날짜, 유통기한 있을 시 이벤트 표시
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        if self.purchaseDates.contains(date) || self.expirationDates.contains(date){
+        if self.expirationDates.contains(date){
                 return 1
             }
             return 0
@@ -87,22 +69,10 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
         self.detailView.isHidden = false
         self.detailDate.text = formatter.string(from: date)
         
-        if let index = foodModel.FoodInfoList.firstIndex(where: {$0.foodExpirationDate == formatter.string(from: date)}) {
-            showExpirationFoods.append(foodModel.FoodInfoList[index])
-        }
-        
-        if let index = foodModel.FoodInfoList.firstIndex(where: {$0.foodPurchaseDate == formatter.string(from: date)}) {
-            showPurchaseFoods.append(foodModel.FoodInfoList[index])
-        }
+        showExpirationFoods.removeAll()
+        foodModel.FoodInfoList.indices.filter{foodModel.FoodInfoList[$0].foodExpirationDate == formatter.string(from: date)}.forEach { showExpirationFoods.append(foodModel.FoodInfoList[$0]) }
         
         self.tableView.reloadData()
-    }
-    
-    // 날짜 선택 해제 시
-    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        self.detailView.isHidden = true
-        showExpirationFoods.removeAll()
-        showPurchaseFoods.removeAll()
     }
 }
 
@@ -110,6 +80,9 @@ class CalendarCustomCell: UITableViewCell {
     
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var state: UILabel!
     
+    func FoodUpdate(info: FoodInfo) {
+        imgView.image = info.image
+        nameLabel.text = info.foodName
+    }
 }

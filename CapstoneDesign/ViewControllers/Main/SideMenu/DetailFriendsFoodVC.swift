@@ -16,7 +16,7 @@ class DetailFriendsFoodVC: UIViewController {
     @IBOutlet weak var expirationDate: UILabel!
     @IBOutlet weak var memo: UITextView!
     
-    var foodInfo = FoodInfo()
+    var foodInfo = FriendFoodInfo()
     
     override func viewDidLoad() {
         super.viewDidLoad()

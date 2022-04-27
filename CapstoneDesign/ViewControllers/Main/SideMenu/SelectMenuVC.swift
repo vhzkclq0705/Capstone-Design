@@ -11,10 +11,10 @@ import Alamofire
 class SelectMenuVC: UIViewController {
 
     var userInfo = UserInfo.sharedUserInfo
+    var emailModel = EmailModel.sharedEmailModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UserInfoGet()
     }
     
     @IBAction func ShoppingList(_ sender: Any) {
@@ -26,11 +26,11 @@ class SelectMenuVC: UIViewController {
     }
     
     @IBAction func Friends(_ sender: Any) {
-        PushNavi(name: "FriendsVC")
+        EmailInfoGet()
     }
     
     @IBAction func Settings(_ sender: Any) {
-        PushNavi(name: "SettingsVC")
+        UserInfoGet()
     }
 }
 
@@ -52,6 +52,43 @@ extension SelectMenuVC {
                         }
                         if let userInfoOpen = jsonData["userInfoOpen"] as? Bool {
                             self.userInfo.userInfoOpen = userInfoOpen
+                        }
+                        self.PushNavi(name: "SettingsVC")
+                        print("유저 정보 GET 완료")
+                    }
+                case .failure(let error):
+                    print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
+                }
+            }
+    }
+    
+    func EmailInfoGet() {
+        let url = "http://3.38.150.193:3000/accountuser/search"
+        AF.request(url,
+                   method: .get,
+                   parameters: nil,
+                   encoding: JSONEncoding.default,
+                   headers: ["Content-Type":"application/json;charset=utf-8", "Accept":"application/json"])
+            .validate(statusCode: 200..<300)
+            .responseJSON { (response) in
+                switch response.result {
+                case .success(let json):
+                    if let data = json as? NSDictionary {
+                        if let email = data["resultUser"] as? [NSDictionary] {
+                            do {
+                                let emailData = try JSONSerialization.data(withJSONObject: email, options: .prettyPrinted)
+                                
+                                let dataModel = try JSONDecoder().decode([EmailInfo].self, from: emailData)
+                                if dataModel.count > 1 {
+                                    for i in 0...dataModel.count - 1 {
+                                        self.emailModel.emailInfoList.append(dataModel[i])
+                                    }
+                                    self.PushNavi(name: "FriendsVC")
+                                }
+                                print("이메일 리스트 GET 완료.")
+                            } catch {
+                                print(error.localizedDescription)
+                            }
                         }
                     }
                 case .failure(let error):

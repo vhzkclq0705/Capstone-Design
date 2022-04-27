@@ -52,7 +52,6 @@ class SetAddFoodVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     
     @IBAction func CompleteButton(_ sender: Any) {
-        var cnt = 0
         for i in 0...addFoodModel.countOfFoodList - 1 {
             if addFoodModel.FoodInfoList[i].foodPurchaseDate == "" ||
                 addFoodModel.FoodInfoList[i].foodExpirationDate == "" ||
@@ -63,25 +62,22 @@ class SetAddFoodVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                 
                 alert.addAction(defaultAction)
                 present(alert, animated: true, completion: nil)
-                
-                cnt += 1
-                break
+            }
+            else {
+                let addFoodInfo = ["foodName": self.addFoodModel.FoodInfoList[i].foodName,
+                                   "foodPurchaseDate": self.addFoodModel.FoodInfoList[i].foodPurchaseDate,
+                                   "foodExpirationDate": self.addFoodModel.FoodInfoList[i].foodExpirationDate,
+                                   "foodMemo": self.addFoodModel.FoodInfoList[i].foodMemo]
+                parameters.append(addFoodInfo)
+                print(parameters.count)
             }
         }
-        if cnt == 0 {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                // loading Indicator 추가
-                
-                for i in 0...self.addFoodModel.countOfFoodList - 1 {
-                    let addFoodInfo = ["foodName": self.addFoodModel.FoodInfoList[i].foodName,
-                                       "foodPurchaseDate": self.addFoodModel.FoodInfoList[i].foodPurchaseDate,
-                                       "foodExpirationDate": self.addFoodModel.FoodInfoList[i].foodExpirationDate,
-                                       "foodMemo": self.addFoodModel.FoodInfoList[i].foodMemo]
-                    self.parameters.append(addFoodInfo)
-                }
-                self.AddFoodPost()
-            }
-            self.navigationController?.popToRootViewController(animated: true)
+        if addFoodModel.countOfFoodList != parameters.count {
+            parameters.removeAll()
+        }
+        else {
+            NotificationCenter.default.post(name: Notification.Name.name, object: nil)
+            AddFoodPost()
         }
     }
     
@@ -108,6 +104,8 @@ class SetAddFoodVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                             for i in 0...self.addFoodModel.countOfFoodList - 1 {
                                 self.foodModel.FoodInfoList.append(self.addFoodModel.FoodInfoList[i])
                             }
+                            print("식재료 추가 완료")
+                            self.navigationController?.popToRootViewController(animated: true)
                         }
                     }
                 }
@@ -127,6 +125,10 @@ extension SetAddFoodVC: EditAddFoodDelegate {
             addFoodModel.FoodInfoList[index] = foodInfo
         }
     }
+}
+
+extension Notification.Name {
+    static let name = Notification.Name("Reload")
 }
 
 class SetAddFoodCell: UITableViewCell {

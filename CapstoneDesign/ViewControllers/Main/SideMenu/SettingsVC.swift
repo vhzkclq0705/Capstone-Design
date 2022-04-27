@@ -17,6 +17,7 @@ class SettingsVC: UIViewController {
     @IBOutlet weak var id: UILabel!
     
     var userInfo = UserInfo.sharedUserInfo
+    var foodModel = FoodModel.sharedFoodModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +70,7 @@ extension SettingsVC {   // Action funcs + Custom funcs
     }
     
     func LogOut() {
+        self.foodModel.FoodInfoList.removeAll()
         self.view.window?.rootViewController?.dismiss(animated: false, completion: nil)
     }
     
@@ -116,7 +118,13 @@ extension SettingsVC {   // Action funcs + Custom funcs
         AF.request(request).responseJSON { (response) in
             switch response.result {
             case .success(let json):
-                print("POST 성공")
+                if let jsonData = json as? NSDictionary {
+                    if let code = jsonData["code"] as? Int {
+                        if code == 200 {
+                            print("정보 저장 완료")
+                        }
+                    }
+                }
             case .failure(let error):
                 print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
             }

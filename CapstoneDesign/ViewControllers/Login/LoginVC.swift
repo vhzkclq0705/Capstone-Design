@@ -31,7 +31,9 @@ class LoginVC: UIViewController {
             Alert(title: "비밀번호를 입력해 주세요.")
         }
         else {
-            LoginInfoPost()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                self.LoginInfoPost()
+            }
         }
     }
     
@@ -58,18 +60,15 @@ extension LoginVC {
         AF.request(request).responseJSON { (response) in
             switch response.result {
             case .success(let json):
-                print("POST 성공")
                 if let jsonData = json as? NSDictionary {
                     if let code = jsonData["code"] as? Int {
                         if code == 401 {
                             self.Alert(title: "이메일 혹은 비밀번호가 잘못되었습니다.")
                         }
                         else if code == 200 {
+                            print("\(self.inputID.text!)으로 로그인 완료")
                             self.FoodInfoGet()
                             self.userInfo.id = self.inputID.text!
-                            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainNaviVC") else { return }
-                            
-                            self.present(vc, animated: true, completion: nil)
                         }
                     }
                 }
@@ -97,11 +96,15 @@ extension LoginVC {
                                 let foodData = try JSONSerialization.data(withJSONObject: food, options: .prettyPrinted)
                                 
                                 let dataModel = try JSONDecoder().decode([FoodInfo].self, from: foodData)
+                                print("식재료 \(dataModel.count)개 GET")
                                 if dataModel.count > 1 {
                                     for i in 0...dataModel.count - 1 {
                                         self.foodModel.FoodInfoList.append(dataModel[i])
                                     }
                                 }
+                                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainNaviVC") else { return }
+                                
+                                self.present(vc, animated: true, completion: nil)
                             } catch {
                                 print(error.localizedDescription)
                             }
