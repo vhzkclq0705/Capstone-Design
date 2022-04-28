@@ -30,6 +30,7 @@
 		7690110927D8927E00E48FA4 /* SearchFoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7690110827D8927E00E48FA4 /* SearchFoodVC.swift */; };
 		769286EE279AC496003E66DC /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769286ED279AC495003E66DC /* LoginVC.swift */; };
 		769286F0279AC4B5003E66DC /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769286EF279AC4B5003E66DC /* RegisterVC.swift */; };
+		76C33F452819B5B100720E55 /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C33F442819B5B100720E55 /* CameraVC.swift */; };
 		76C39CC527DCCC5500AB46F6 /* SetAddFoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C39CC427DCCC5500AB46F6 /* SetAddFoodVC.swift */; };
 		76C3DE2F2815773D002A3D61 /* SelectMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C3DE2E2815773D002A3D61 /* SelectMenuVC.swift */; };
 		76C7DC6827E9CFA10049C0EA /* RecipeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C7DC6727E9CFA10049C0EA /* RecipeVC.swift */; };
@@ -69,6 +70,7 @@
 		7690110827D8927E00E48FA4 /* SearchFoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodVC.swift; sourceTree = "<group>"; };
 		769286ED279AC495003E66DC /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		769286EF279AC4B5003E66DC /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		76C33F442819B5B100720E55 /* CameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraVC.swift; sourceTree = "<group>"; };
 		76C39CC427DCCC5500AB46F6 /* SetAddFoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAddFoodVC.swift; sourceTree = "<group>"; };
 		76C3DE2E2815773D002A3D61 /* SelectMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMenuVC.swift; sourceTree = "<group>"; };
 		76C7DC6727E9CFA10049C0EA /* RecipeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeVC.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				7690110627D732D100E48FA4 /* AddSelectVC.swift */,
+				76C33F442819B5B100720E55 /* CameraVC.swift */,
 				7690110827D8927E00E48FA4 /* SearchFoodVC.swift */,
 				76C39CC427DCCC5500AB46F6 /* SetAddFoodVC.swift */,
 				76DAA1C427DF35B600D5C657 /* SetDetailFoodVC.swift */,
@@ -378,6 +381,7 @@
 				7690110927D8927E00E48FA4 /* SearchFoodVC.swift in Sources */,
 				76C3DE2F2815773D002A3D61 /* SelectMenuVC.swift in Sources */,
 				766924E227969B0D00DB0795 /* AppDelegate.swift in Sources */,
+				76C33F452819B5B100720E55 /* CameraVC.swift in Sources */,
 				76D4428B279C08D20023233B /* MainVC.swift in Sources */,
 				76C39CC527DCCC5500AB46F6 /* SetAddFoodVC.swift in Sources */,
 				764BFC7727E49E8E00462C52 /* SettingsVC.swift in Sources */,

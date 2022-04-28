@@ -57,18 +57,13 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.FriendFoodInfoGet(index: indexPath.row)
-        
-//        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "ShowFriendVC") as? ShowFriendVC else { return }
-//        vc.friendName = self.emailModel.emailInfoList[indexPath.row].email
-//
-//        self.navigationController?.pushViewController(vc, animated: true)
+        self.FriendFoodInfoGet(email: emailToString[indexPath.row])
         
         searchBar.searchTextField.endEditing(true)
     }
     
-    func FriendFoodInfoGet(index: Int) {
-        let url = "http://3.38.150.193:3000/accountuser/otheruser/" + self.emailModel.emailInfoList[index].email
+    func FriendFoodInfoGet(email: String) {
+        let url = "http://3.38.150.193:3000/accountuser/otheruser/" + email
         AF.request(url,
                    method: .get,
                    parameters: nil,
@@ -92,7 +87,7 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                                             }
                                             print("친구 식재료 리스트 GET 완료.")
                                             guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "ShowFriendVC") as? ShowFriendVC else { return }
-                                            vc.friendName = self.emailModel.emailInfoList[index].email
+                                            vc.friendName = email
                                                 
                                             self.navigationController?.pushViewController(vc, animated: true)
                                         }
@@ -103,7 +98,7 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                             }
                         }
                     }
-                case .failure(let error):
+                case .failure(_):
                     print("조회가 허용되지 않은 유저")
                     self.Alert(title: "조회가 허용되지 않은 유저입니다.")
                 }

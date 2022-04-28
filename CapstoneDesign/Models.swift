@@ -132,9 +132,20 @@ class FriendsFoodModel {
 
 // 식재료 추가할 때 사용하는 모델
 class AddFoodModel {
+    static let sharedAddFoodModel = AddFoodModel()
+    
     var FoodInfoList: [FoodInfo] = []
     
     var countOfFoodList: Int {
         return FoodInfoList.count
+    }
+}
+
+// AI연동용
+struct ImageInfo: Codable {
+    var class_name = [String]()
+    
+    init() {
+        self.class_name = []
     }
 }
