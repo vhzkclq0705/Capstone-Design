@@ -100,7 +100,7 @@ extension SettingsVC {   // Action funcs + Custom funcs
     }
     
     func SetInfo() {
-        let url = "http://3.38.150.193:3000/accountuser/config"
+        let url = ""
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "PUT"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

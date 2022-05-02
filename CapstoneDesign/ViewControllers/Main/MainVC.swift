@@ -195,7 +195,7 @@ extension MainVC {  // Action funcs + Custom funcs
     }
     
     func DelFoodPost() {
-        let url = "http://3.38.150.193:3000/food/delFood"
+        let url = ""
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

@@ -69,7 +69,7 @@ extension CorrectFoodVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func CorrectInfo() {
-        let url = "http://3.38.150.193:3000/food/changeInfo"
+        let url = ""
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "PUT"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

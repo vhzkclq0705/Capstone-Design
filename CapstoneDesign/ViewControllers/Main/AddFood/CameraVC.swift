@@ -115,7 +115,7 @@ extension CameraVC: AVCaptureVideoDataOutputSampleBufferDelegate {
     }
     
     func ImagePost(image: UIImage) {
-        let url = "https://42d2-180-229-29-103.jp.ngrok.io"
+        let url = ""
         let imgData = image.jpegData(compressionQuality: 0)!
         AF.upload(multipartFormData: { multipartFormData in
             multipartFormData.append(imgData, withName: "file", fileName: "file.jpg", mimeType: "image/jpeg")

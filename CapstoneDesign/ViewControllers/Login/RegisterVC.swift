@@ -47,7 +47,7 @@ extension RegisterVC {  // Action funcs
 extension RegisterVC {
     // 회원가입 정보 서버로 POST
     func RegisterInfoPost() {
-        let url = "http://3.38.150.193:3000/User/signup"
+        let url = ""
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

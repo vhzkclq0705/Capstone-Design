@@ -36,7 +36,7 @@ class SelectMenuVC: UIViewController {
 
 extension SelectMenuVC {
     func UserInfoGet() {
-        let url = "http://3.38.150.193:3000/accountuser/config"
+        let url = ""
         AF.request(url,
                    method: .get,
                    parameters: nil,
@@ -63,7 +63,7 @@ extension SelectMenuVC {
     }
     
     func EmailInfoGet() {
-        let url = "http://3.38.150.193:3000/accountuser/search"
+        let url = ""
         AF.request(url,
                    method: .get,
                    parameters: nil,

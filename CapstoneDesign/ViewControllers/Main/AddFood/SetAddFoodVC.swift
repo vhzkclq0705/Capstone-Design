@@ -82,7 +82,7 @@ class SetAddFoodVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func AddFoodPost() {
-        let url = "http://3.38.150.193:3000/food/addFood"
+        let url = ""
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

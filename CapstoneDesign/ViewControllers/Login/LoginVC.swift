@@ -41,7 +41,7 @@ class LoginVC: UIViewController {
 
 extension LoginVC {
     func LoginInfoPost() {
-        let url = "http://3.38.150.193:3000/User/login"
+        let url = ""
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -80,7 +80,7 @@ extension LoginVC {
     }
     
     func FoodInfoGet() {
-        let url = "http://3.38.150.193:3000/food/config"
+        let url = ""
         AF.request(url,
                    method: .get,
                    parameters: nil,
