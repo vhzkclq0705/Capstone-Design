@@ -16,8 +16,10 @@
 - 달력에 식재료 유통기한이 보기 쉽게 표시
 - 타 유저의 식재료 확인
 
-## 실행 화면
-![AI](https://user-images.githubusercontent.com/75382687/166254770-721fb994-d2cc-404d-b650-45fba3fac897.gif)
+## 실행 화면(2배속)
+![AI](https://user-images.githubusercontent.com/75382687/166254770-721fb994-d2cc-404d-b650-45fba3fac897.gif) ![Crawling](https://user-images.githubusercontent.com/75382687/166256311-14043162-3ba3-40b6-bfab-7de4f34bfbbf.gif)
+
+     실시간 식재료 인식               크롤링
 
 ## 사용한 라이브러리
 - Alamofire
