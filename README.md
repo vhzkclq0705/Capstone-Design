@@ -17,7 +17,7 @@
 - 타 유저의 식재료 확인
 
 ## 실행 화면
-https://user-images.githubusercontent.com/75382687/166249721-7495ba89-27c8-431a-b524-68d18177681b.mp4
+![AI](https://user-images.githubusercontent.com/75382687/166254770-721fb994-d2cc-404d-b650-45fba3fac897.gif)
 
 ## 사용한 라이브러리
 - Alamofire
