@@ -16,16 +16,12 @@ class DetailFoodVC: UIViewController {
     @IBOutlet weak var expirationDate: UILabel!
     @IBOutlet weak var memo: UITextView!
     
-    var foodInfo = FoodInfo()
+    var food: Food?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        foodName.text = foodInfo.foodName
-        purchaseDate.text = foodInfo.foodPurchaseDate
-        expirationDate.text = foodInfo.foodExpirationDate
-        memo.text = foodInfo.foodMemo
-        backgroundImg.image = foodInfo.image
+        setup()
     }
     
     override func viewWillLayoutSubviews() {
@@ -50,6 +46,14 @@ class DetailFoodVC: UIViewController {
 }
 
 extension DetailFoodVC {    // Action funcs
+    func setup() {
+        foodName.text = food?.name
+        purchaseDate.text = food?.purchaseDate
+        expirationDate.text = food?.expirationDate
+        memo.text = food?.memo
+        backgroundImg.image = UIImage(named: "\(food?.name ?? "미정").jpg")
+    }
+    
     @IBAction func CloseButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -57,7 +61,7 @@ extension DetailFoodVC {    // Action funcs
     @IBAction func FindRecipeButton(_ sender: Any) {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "RecipeVC") as? RecipeVC else { return }
         
-        vc.foodName = foodInfo.foodName
+        vc.foodName = food?.name
         present(vc, animated: true, completion: nil)
     }
 }

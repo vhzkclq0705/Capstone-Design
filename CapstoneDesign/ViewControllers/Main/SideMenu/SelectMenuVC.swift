@@ -15,6 +15,7 @@ class SelectMenuVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     @IBAction func ShoppingList(_ sender: Any) {
@@ -36,7 +37,11 @@ class SelectMenuVC: UIViewController {
 
 extension SelectMenuVC {
     func UserInfoGet() {
+<<<<<<< HEAD
         let url = ""
+=======
+        let url = "http://3.38.150.193:3000/userinfo/config"
+>>>>>>> 380ca25 (Code Repactoring 1)
         AF.request(url,
                    method: .get,
                    parameters: nil,
@@ -63,7 +68,11 @@ extension SelectMenuVC {
     }
     
     func EmailInfoGet() {
+<<<<<<< HEAD
         let url = ""
+=======
+        let url = "http://3.38.150.193:3000/userinfo/search"
+>>>>>>> 380ca25 (Code Repactoring 1)
         AF.request(url,
                    method: .get,
                    parameters: nil,

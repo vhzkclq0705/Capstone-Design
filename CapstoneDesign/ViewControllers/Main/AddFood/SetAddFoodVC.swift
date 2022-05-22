@@ -69,7 +69,6 @@ class SetAddFoodVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                                    "foodExpirationDate": self.addFoodModel.FoodInfoList[i].foodExpirationDate,
                                    "foodMemo": self.addFoodModel.FoodInfoList[i].foodMemo]
                 parameters.append(addFoodInfo)
-                print(parameters.count)
             }
         }
         if addFoodModel.countOfFoodList != parameters.count {

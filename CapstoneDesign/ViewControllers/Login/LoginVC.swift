@@ -21,18 +21,28 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func CompleteLoginButton(_ sender: Any) {
-        //guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainNaviVC") else { return }
-        
-        //self.present(vc, animated: true, completion: nil)
-        if inputID.text == "" {
+        guard let id = inputID.text, id.isEmpty == false else {
             Alert(title: "이메일을 입력해 주세요.")
+            return
         }
-        else if inputPW.text == "" {
+        guard let pw = inputPW.text, pw.isEmpty == false else {
             Alert(title: "비밀번호를 입력해 주세요.")
+            return
         }
-        else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                self.LoginInfoPost()
+        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//            self.LoginInfoPost()
+//        }
+        
+        let params = ["id": id, "password": pw]
+        login(params) { [weak self] code in
+            if code == .fail {
+                self?.present(Alert2(title: "아이디 혹은 비밀번호를 잘못 입력 하였습니다."), animated: true, completion: nil)
+            }
+            else {
+                guard let vc = self?.storyboard?.instantiateViewController(withIdentifier: "MainNaviVC") else { return }
+                
+                self?.present(vc, animated: true, completion: nil)
             }
         }
     }
@@ -48,11 +58,10 @@ extension LoginVC {
         request.timeoutInterval = 10
             
         // POST 로 보낼 정보
-        let params = ["id":inputID.text, "password":inputPW.text] as Dictionary
-
+        let params: NSDictionary = ["id":inputID.text!, "password":inputPW.text!]
         // httpBody 에 parameters 추가
         do {
-            try request.httpBody = JSONSerialization.data(withJSONObject: params, options: [])
+            try request.httpBody = JSONSerialization.data(withJSONObject: params)
         } catch {
             print("http Body Error")
         }
@@ -68,6 +77,8 @@ extension LoginVC {
                         else if code == 200 {
                             print("\(self.inputID.text!)으로 로그인 완료")
                             self.FoodInfoGet()
+                            //networking(url: "http://3.38.150.193:3000/food/config", method: .get, params: nil)
+                            
                             self.userInfo.id = self.inputID.text!
                         }
                     }

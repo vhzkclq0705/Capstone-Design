@@ -189,60 +189,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eFs-TF-rY8">
-                                <rect key="frame" x="16" y="112" width="358" height="610"/>
+                                <rect key="frame" x="0.0" y="112" width="390" height="610"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Isd-1z-uWY">
-                                    <size key="itemSize" width="128" height="128"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="20" minimumInteritemSpacing="0.0" id="Isd-1z-uWY">
+                                    <size key="itemSize" width="100" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="EXX-KW-ggD" customClass="FoodCell" customModule="CapstoneDesign" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Ajr-bL-QLg">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="han-Yy-urK">
-                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="86"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uas-sg-gy6">
-                                                    <rect key="frame" x="0.0" y="94" width="128" height="26"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="TmonMonsoriBlack" family="TmonMonsori" pointSize="15"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <view contentMode="scaleToFill" id="oQZ-bP-Y2j" customClass="ViewStyle" customModule="CapstoneDesign" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="0.0" width="20" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="checkmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="DZh-c7-6YA">
-                                                            <rect key="frame" x="3" y="3" width="15" height="15"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </imageView>
-                                                    </subviews>
-                                                    <color key="backgroundColor" name="lightSky"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="10"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
-                                            </subviews>
-                                        </collectionViewCellContentView>
-                                        <connections>
-                                            <outlet property="checkImg" destination="DZh-c7-6YA" id="hlD-0m-lem"/>
-                                            <outlet property="checkView" destination="oQZ-bP-Y2j" id="SxR-5r-fyY"/>
-                                            <outlet property="imgView" destination="han-Yy-urK" id="oQE-ti-vLd"/>
-                                            <outlet property="nameLabel" destination="Uas-sg-gy6" id="gyG-XT-iJq"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                                 <connections>
                                     <outlet property="dataSource" destination="7HA-DA-WjY" id="0Jk-Tr-31g"/>
                                     <outlet property="delegate" destination="7HA-DA-WjY" id="e8r-Uf-cmH"/>
@@ -357,12 +312,12 @@
                         <constraints>
                             <constraint firstItem="eFs-TF-rY8" firstAttribute="top" secondItem="Jes-rO-d2W" secondAttribute="top" constant="24" id="4AT-op-QHN"/>
                             <constraint firstItem="ejp-ZI-OId" firstAttribute="top" secondItem="Jes-rO-d2W" secondAttribute="top" constant="642" id="8ra-OM-OUt"/>
-                            <constraint firstItem="Jes-rO-d2W" firstAttribute="trailing" secondItem="eFs-TF-rY8" secondAttribute="trailing" constant="16" id="EmN-D8-zlU"/>
+                            <constraint firstItem="Jes-rO-d2W" firstAttribute="trailing" secondItem="eFs-TF-rY8" secondAttribute="trailing" id="EmN-D8-zlU"/>
                             <constraint firstItem="Jes-rO-d2W" firstAttribute="trailing" secondItem="tmy-2c-p4r" secondAttribute="trailing" constant="73.666666666666629" id="EoQ-uF-PLc"/>
                             <constraint firstItem="Jes-rO-d2W" firstAttribute="bottom" secondItem="tmy-2c-p4r" secondAttribute="bottom" constant="41" id="G80-J0-phb"/>
                             <constraint firstItem="Jes-rO-d2W" firstAttribute="bottom" secondItem="eFs-TF-rY8" secondAttribute="bottom" constant="88" id="Hdk-pK-2HZ"/>
                             <constraint firstItem="Jes-rO-d2W" firstAttribute="trailing" secondItem="ejp-ZI-OId" secondAttribute="trailing" constant="50" id="Hzp-hs-sMx"/>
-                            <constraint firstItem="eFs-TF-rY8" firstAttribute="leading" secondItem="Jes-rO-d2W" secondAttribute="leading" constant="16" id="YEO-zF-NHh"/>
+                            <constraint firstItem="eFs-TF-rY8" firstAttribute="leading" secondItem="Jes-rO-d2W" secondAttribute="leading" id="YEO-zF-NHh"/>
                             <constraint firstItem="tmy-2c-p4r" firstAttribute="top" secondItem="Jes-rO-d2W" secondAttribute="top" constant="642" id="ecf-7v-oIu"/>
                             <constraint firstItem="ejp-ZI-OId" firstAttribute="leading" secondItem="Jes-rO-d2W" secondAttribute="leading" constant="50" id="fZq-b2-77c"/>
                             <constraint firstItem="Jes-rO-d2W" firstAttribute="bottom" secondItem="ejp-ZI-OId" secondAttribute="bottom" constant="41" id="vbd-eg-CzV"/>
@@ -2093,7 +2048,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jQ6-eY-cO4">
-                                <rect key="frame" x="16" y="140" width="358" height="570"/>
+                                <rect key="frame" x="16" y="84" width="358" height="626"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="duc-3p-aEG" customClass="CorrectFoodCell" customModule="CapstoneDesign" customModuleProvider="target">
@@ -2158,7 +2113,7 @@
                         <constraints>
                             <constraint firstItem="FbJ-6I-1kP" firstAttribute="bottom" secondItem="jQ6-eY-cO4" secondAttribute="bottom" constant="51" id="0gd-EE-zmv"/>
                             <constraint firstItem="jQ6-eY-cO4" firstAttribute="leading" secondItem="FbJ-6I-1kP" secondAttribute="leading" constant="16" id="7oi-w3-SvK"/>
-                            <constraint firstItem="jQ6-eY-cO4" firstAttribute="top" secondItem="FbJ-6I-1kP" secondAttribute="top" constant="96" id="Qfs-cs-5eG"/>
+                            <constraint firstItem="jQ6-eY-cO4" firstAttribute="top" secondItem="FbJ-6I-1kP" secondAttribute="top" constant="40" id="Qfs-cs-5eG"/>
                             <constraint firstItem="FbJ-6I-1kP" firstAttribute="trailing" secondItem="jQ6-eY-cO4" secondAttribute="trailing" constant="16" id="Rvg-gh-ktE"/>
                         </constraints>
                     </view>
@@ -2352,7 +2307,7 @@
                                         <size key="customSize" width="358" height="119.33"/>
                                         <connections>
                                             <outlet property="imgView" destination="rcx-A4-Wpz" id="m4z-qZ-IOj"/>
-                                            <outlet property="title" destination="S15-cc-2B0" id="y9R-P2-5wY"/>
+                                            <outlet property="titleLabel" destination="S15-cc-2B0" id="E5c-Ty-6Xr"/>
                                             <segue destination="g4K-m8-Ddd" kind="presentation" identifier="recommendWeb" id="Eh2-f0-OqO"/>
                                         </connections>
                                     </collectionViewCell>

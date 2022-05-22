@@ -63,7 +63,11 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func FriendFoodInfoGet(email: String) {
+<<<<<<< HEAD
         let url = ""
+=======
+        let url = "http://3.38.150.193:3000/userinfo/otheruser/" + email
+>>>>>>> 380ca25 (Code Repactoring 1)
         AF.request(url,
                    method: .get,
                    parameters: nil,

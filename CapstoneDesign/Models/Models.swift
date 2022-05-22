@@ -140,12 +140,3 @@ class AddFoodModel {
         return FoodInfoList.count
     }
 }
-
-// AI연동용
-struct ImageInfo: Codable {
-    var class_name = [String]()
-    
-    init() {
-        self.class_name = []
-    }
-}

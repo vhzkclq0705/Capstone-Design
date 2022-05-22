@@ -17,6 +17,8 @@ class RecommendVC: UIViewController {
     var titleList = [String]()
     var linkList = [String]()
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         crawl()
@@ -77,16 +79,14 @@ class RecommendVC: UIViewController {
 
 extension RecommendVC: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         return titleList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? RecommendCell else { return UICollectionViewCell() }
         
-        cell.title.text = titleList[indexPath.item]
-        cell.imgView.image = imgList[indexPath.item]
-        cell.layer.borderColor = UIColor.lightGray.cgColor
-        cell.layer.borderWidth = 1
+        cell.update(title: titleList[indexPath.row], img: imgList[indexPath.row])
         
         return cell
     }
@@ -127,9 +127,4 @@ extension RecommendVC: UICollectionViewDelegateFlowLayout {
     }
 }
 
-class RecommendCell: UICollectionViewCell {
-    
-    @IBOutlet weak var imgView: UIImageView!
-    @IBOutlet weak var title: UILabel!
-    
-}
+
