@@ -21,8 +21,34 @@
 
      실시간 식재료 인식               크롤링
 
+## 코드 리팩토링
+- 1차 리팩토링
+  > ViewController 데이터 전달 시 Model의 형태로 전달
+  > 
+  > isDeleting() 내부 중복 코드 삭제
+
+- 2차 리팩토링
+  > Model에 들어있는 dummy값들 모두 삭제
+  > 
+  > 서버의 url 변경으로 인한 코드 수정 
+
+- 3차 리팩토링 (본격적인 리팩토링 시작)
+  > MVVM패턴 적용을 위한 Model 분리, ViewModel 생성 (기존에는 ViewModel이 없었다.)
+  > 
+  > API 통합을 위해 Networking 파일 생성 (진행 중)
+  > 
+  > 서버 주소를 한 곳에서 불러오기 위해 Address 열거형 타입 생성
+  > 
+  > Escaping Closure를 이용한 API 데이터 전달
+  > 
+  > MainVC에 표시될 Cell을 xib 파일로 분리
+  > 
+  > 크롤링해서 받아온 이미지 url을 쉽게 적용하기 위해 Kingfisher 라이브러리 적용
+  
+
 ## 사용한 라이브러리
 - Alamofire
 - SideMenu
 - SwiftSoup
 - FSCalendar
+- Kingfisher
