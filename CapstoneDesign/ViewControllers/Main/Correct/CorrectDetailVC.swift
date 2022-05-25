@@ -7,9 +7,9 @@
 
 import UIKit
 
-protocol EditCorrectFoodDelegate {
-    func didCorrectFoodEditDone(_ controller: CorrectDetailVC, data: FoodInfo)
-}
+//protocol EditCorrectFoodDelegate {
+//    func didCorrectFoodEditDone(_ controller: CorrectDetailVC, data: FoodInfo)
+//}
 
 class CorrectDetailVC: UIViewController, UITableViewDelegate {
     
@@ -20,51 +20,49 @@ class CorrectDetailVC: UIViewController, UITableViewDelegate {
     @IBOutlet weak var endDate: UITextField!
     @IBOutlet weak var memo: UITextView!
     
-    var delegate: EditCorrectFoodDelegate?
-    var foodInfo = FoodInfo()
+    //var delegate: EditCorrectFoodDelegate?
+    //var food: Food?
+    let viewModel = CorrectViewModel.shared
     let datePicker = UIDatePicker(frame: CGRect(x: 0, y: 0, width: 390, height: 216))
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = SetBackButton()
         
         CreateDatePicker()
-        Init()
+        setup()
     }
 }
 
 extension CorrectDetailVC { // Action funcs + Custom funcs
-    func Init() {
-        imageView.image = foodInfo.image
-        foodTitle.text = foodInfo.foodName
-        buyDate.text = foodInfo.foodPurchaseDate
-        endDate.text = foodInfo.foodExpirationDate
+    func setup() {
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = SetBackButton()
         
-        memo.layer.borderWidth = 1.0
-        memo.layer.borderColor = UIColor.lightGray.cgColor
-        if foodInfo.foodMemo == "" {
-            memo.text = "메모를 입력하세요."
-            memo.textColor = UIColor.lightGray
-        }
-        else {
-            memo.text = foodInfo.foodMemo
-            memo.textColor = UIColor.black
-        }
+        imageView.image = UIImage(named: viewModel.detailFood.name)
+        foodTitle.text = viewModel.detailFood.name
+        buyDate.text = viewModel.detailFood.purchaseDate
+        endDate.text = viewModel.detailFood.expirationDate
+        memo.text = viewModel.detailFood.memo
     }
 
     @IBAction func CompleteButton(_ sender: Any) {
-        if delegate != nil {
-            foodInfo.foodPurchaseDate = buyDate.text!
-            foodInfo.foodExpirationDate = endDate.text!
-            if memo.text == "메모를 입력하세요." {
-                foodInfo.foodMemo = ""
-            }
-            else {
-                foodInfo.foodMemo = memo.text
-            }
-            delegate?.didCorrectFoodEditDone(self, data: foodInfo)
-        }
+//        if delegate != nil {
+//            food?.purchaseDate = buyDate.text!
+//            foodInfo.foodExpirationDate = endDate.text!
+//            if memo.text == "메모를 입력하세요." {
+//                foodInfo.foodMemo = ""
+//            }
+//            else {
+//                foodInfo.foodMemo = memo.text
+//            }
+//            delegate?.didCorrectFoodEditDone(self, data: foodInfo)
+//        }
+        guard let purchaseDate = buyDate.text, purchaseDate.isEmpty == false,
+                let expirationDate = endDate.text, expirationDate.isEmpty == false,
+              let memo = memo.text, memo.isEmpty == false else {
+            present(Alert("정보를 모두 입력해 주세요."), animated: true)
+            return }
         
+        viewModel.correctDetail(purchaseDate: buyDate.text, expirationdate: endDate.text, memo: memo.text)
         self.navigationController?.popViewController(animated: true)
     }
     

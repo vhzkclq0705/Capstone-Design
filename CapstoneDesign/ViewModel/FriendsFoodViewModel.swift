@@ -8,11 +8,10 @@
 import Foundation
 
 class FriendsFoodViewModel {
-    static let sharedFoodModel = FriendsFoodViewModel()
     
     var foods = [Food]()
     
-    private init() { }
+
     
     var countOfFoods: Int {
         return foods.count

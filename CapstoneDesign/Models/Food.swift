@@ -21,6 +21,10 @@ struct Food: Codable, Equatable {
         case expirationDate = "foodExpirationDate"
         case memo = "foodMemo"
     }
+    
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
 
 

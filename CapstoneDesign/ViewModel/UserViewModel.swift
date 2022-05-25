@@ -8,9 +8,6 @@
 import Foundation
 
 class UserViewModel {
-    static let shared = UserViewModel()
-    
-    private init () {}
     
     var user = User()
     

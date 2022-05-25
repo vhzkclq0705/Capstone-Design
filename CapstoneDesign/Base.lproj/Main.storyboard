@@ -379,7 +379,7 @@
         <!--Detail FoodVC-->
         <scene sceneID="yyq-Sn-KVo">
             <objects>
-                <viewController storyboardIdentifier="DetailFoodVC" id="0is-K4-VfF" customClass="DetailFoodVC" customModule="CapstoneDesign" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailFoodVC" id="0is-K4-VfF" customClass="DetailFoodVC" customModule="CapstoneDesign" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j36-Es-ZTV">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -506,7 +506,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mTg-wg-4GC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1416.9230769230769" y="3014.9289099526063"/>
+            <point key="canvasLocation" x="485" y="2600"/>
         </scene>
         <!--Customside Menu Navigation-->
         <scene sceneID="pF6-gI-6cM">
@@ -866,7 +866,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rtj-D3-FbH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="488" y="4590"/>
+            <point key="canvasLocation" x="488" y="4164"/>
         </scene>
         <!--재료 검색-->
         <scene sceneID="nf8-vx-pje">
@@ -981,7 +981,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="orl-Q8-hrK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1488" y="4590"/>
+            <point key="canvasLocation" x="1488" y="4164"/>
         </scene>
         <!--재료 정보 설정-->
         <scene sceneID="QjE-ph-IaF">
@@ -1070,7 +1070,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v5z-pE-WPq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2441.5384615384614" y="4589.5734597156397"/>
+            <point key="canvasLocation" x="2442" y="4164"/>
         </scene>
         <!--재료 정보 입력-->
         <scene sceneID="LRP-Wz-3We">
@@ -1185,7 +1185,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hyO-vi-9d2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3357" y="4590"/>
+            <point key="canvasLocation" x="3357" y="4164"/>
         </scene>
         <!--CameraVC-->
         <scene sceneID="ajv-fZ-Ayt">
@@ -1262,106 +1262,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="czw-3n-PqN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1461.5384615384614" y="5337.4407582938384"/>
-        </scene>
-        <!--레시피 목록-->
-        <scene sceneID="JSY-yd-U0R">
-            <objects>
-                <viewController storyboardIdentifier="RecipeVC" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cH5-Iw-ox8" customClass="RecipeVC" customModule="CapstoneDesign" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="0Qr-xd-owd">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iyH-So-ocQ">
-                                <rect key="frame" x="0.0" y="-6" width="390" height="96"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cPo-qh-xcA">
-                                        <rect key="frame" x="0.0" y="50" width="43" height="38"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="BackButton:" destination="cH5-Iw-ox8" eventType="touchUpInside" id="MZW-bY-hZd"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="레시피 목록" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jgQ-Zt-gNY">
-                                        <rect key="frame" x="122" y="50" width="147" height="41"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="TmonMonsoriBlack" family="TmonMonsori" pointSize="30"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" name="lightSky"/>
-                            </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kXb-bV-Joa">
-                                <rect key="frame" x="16" y="94" width="358" height="716"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Qyh-nI-vgc">
-                                    <size key="itemSize" width="358" height="179"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="stp-XL-x3A" customClass="RecipeCell" customModule="CapstoneDesign" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="358" height="119.33"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="teV-wG-nSC">
-                                            <rect key="frame" x="0.0" y="0.0" width="358" height="119.33"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ju0-0w-K1d">
-                                                    <rect key="frame" x="0.0" y="0.0" width="119" height="119"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Yv-mO-Mj7">
-                                                    <rect key="frame" x="127" y="0.0" width="231" height="119"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="358" height="119.33"/>
-                                        <connections>
-                                            <outlet property="imgView" destination="ju0-0w-K1d" id="U9H-vE-vWN"/>
-                                            <outlet property="title" destination="5Yv-mO-Mj7" id="z7I-WT-fmz"/>
-                                            <segue destination="g4K-m8-Ddd" kind="presentation" identifier="showWeb" id="Xrn-gs-eAG"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="cH5-Iw-ox8" id="GMn-QQ-iNx"/>
-                                    <outlet property="delegate" destination="cH5-Iw-ox8" id="i2L-WE-5iZ"/>
-                                </connections>
-                            </collectionView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="ns0-6p-LLl"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="kXb-bV-Joa" firstAttribute="top" secondItem="ns0-6p-LLl" secondAttribute="top" constant="50" id="FfK-Fe-Qhp"/>
-                            <constraint firstItem="ns0-6p-LLl" firstAttribute="bottom" secondItem="iyH-So-ocQ" secondAttribute="bottom" constant="720" id="GWs-nF-YSu"/>
-                            <constraint firstItem="ns0-6p-LLl" firstAttribute="trailing" secondItem="kXb-bV-Joa" secondAttribute="trailing" constant="16" id="ISr-si-u8D"/>
-                            <constraint firstItem="kXb-bV-Joa" firstAttribute="leading" secondItem="ns0-6p-LLl" secondAttribute="leading" constant="16" id="Rke-pn-Vza"/>
-                            <constraint firstItem="iyH-So-ocQ" firstAttribute="leading" secondItem="ns0-6p-LLl" secondAttribute="leading" id="Sv1-Vd-2eu"/>
-                            <constraint firstItem="ns0-6p-LLl" firstAttribute="trailing" secondItem="iyH-So-ocQ" secondAttribute="trailing" id="YzE-Ey-yoq"/>
-                            <constraint firstItem="ns0-6p-LLl" firstAttribute="bottom" secondItem="kXb-bV-Joa" secondAttribute="bottom" id="Zwc-FV-t7N"/>
-                            <constraint firstItem="ns0-6p-LLl" firstAttribute="top" secondItem="iyH-So-ocQ" secondAttribute="top" constant="50" id="wBk-VH-HDe"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="레시피 목록" id="RJV-UI-bZG"/>
-                    <connections>
-                        <outlet property="collectionView" destination="kXb-bV-Joa" id="aKj-up-FTz"/>
-                        <outlet property="topView" destination="iyH-So-ocQ" id="A3k-1b-7dR"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WFh-1H-EjJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2416.9230769230767" y="3014.9289099526063"/>
+            <point key="canvasLocation" x="1462" y="4912"/>
         </scene>
         <!--Web KitVC-->
         <scene sceneID="dyO-VM-22y">
@@ -1424,7 +1325,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N1C-oe-qXs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3370.7692307692305" y="3014.9289099526063"/>
+            <point key="canvasLocation" x="2438" y="2600"/>
         </scene>
         <!--설정-->
         <scene sceneID="BPJ-9z-Nx3">
@@ -2051,7 +1952,7 @@
                                 <rect key="frame" x="16" y="84" width="358" height="626"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="duc-3p-aEG" customClass="CorrectFoodCell" customModule="CapstoneDesign" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="duc-3p-aEG" customClass="CorrectCell" customModule="CapstoneDesign" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.666666030883789" width="358" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="duc-3p-aEG" id="SQL-Fb-MSW">
@@ -2126,7 +2027,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XrJ-p7-lM3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1416.9230769230769" y="3774.8815165876777"/>
+            <point key="canvasLocation" x="485" y="3360"/>
         </scene>
         <!--재료 정보 수정-->
         <scene sceneID="RQe-AX-iiF">
@@ -2241,7 +2142,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tf8-vh-a7I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2416.9230769230767" y="3774.8815165876777"/>
+            <point key="canvasLocation" x="1485" y="3360"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hDG-XW-BLG">
@@ -2270,13 +2171,13 @@
         <!--추천 레시피-->
         <scene sceneID="oBz-hi-aEK">
             <objects>
-                <viewController storyboardIdentifier="RecommendVC" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nq9-jr-Hx6" customClass="RecommendVC" customModule="CapstoneDesign" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecipeVC" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nq9-jr-Hx6" customClass="RecipeVC" customModule="CapstoneDesign" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ywi-ed-bEC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ImQ-9h-7XN">
-                                <rect key="frame" x="16" y="64" width="358" height="746"/>
+                                <rect key="frame" x="16" y="104" width="358" height="706"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CLE-Al-ONZ">
                                     <size key="itemSize" width="358" height="179"/>
@@ -2285,7 +2186,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="RcB-bk-2GU" customClass="RecommendCell" customModule="CapstoneDesign" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="RcB-bk-2GU" customClass="RecipeCell" customModule="CapstoneDesign" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="358" height="119.33"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="jRS-Aa-AGc">
@@ -2308,7 +2209,7 @@
                                         <connections>
                                             <outlet property="imgView" destination="rcx-A4-Wpz" id="m4z-qZ-IOj"/>
                                             <outlet property="titleLabel" destination="S15-cc-2B0" id="E5c-Ty-6Xr"/>
-                                            <segue destination="g4K-m8-Ddd" kind="presentation" identifier="recommendWeb" id="Eh2-f0-OqO"/>
+                                            <segue destination="g4K-m8-Ddd" kind="presentation" identifier="gotoWeb" id="Eh2-f0-OqO"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -2317,94 +2218,58 @@
                                     <outlet property="delegate" destination="nq9-jr-Hx6" id="wsj-k8-gfL"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBC-7w-YQF">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="96"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jyx-6o-Giq">
+                                        <rect key="frame" x="0.0" y="50" width="43" height="38"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="backButton:" destination="nq9-jr-Hx6" eventType="touchUpInside" id="dZ8-uk-n5i"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="레시피 목록" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EpA-nI-6mY">
+                                        <rect key="frame" x="122" y="50" width="147" height="41"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="TmonMonsoriBlack" family="TmonMonsori" pointSize="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="lightSky"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="96" id="TJM-o7-tkO"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="S5P-uL-QO5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="S5P-uL-QO5" firstAttribute="bottom" secondItem="ImQ-9h-7XN" secondAttribute="bottom" id="Dkx-TF-oXj"/>
                             <constraint firstItem="S5P-uL-QO5" firstAttribute="trailing" secondItem="ImQ-9h-7XN" secondAttribute="trailing" constant="16" id="edH-pv-XLF"/>
-                            <constraint firstItem="ImQ-9h-7XN" firstAttribute="top" secondItem="S5P-uL-QO5" secondAttribute="top" constant="20" id="hmE-iX-Ybb"/>
+                            <constraint firstItem="ImQ-9h-7XN" firstAttribute="top" secondItem="S5P-uL-QO5" secondAttribute="top" constant="60" id="hmE-iX-Ybb"/>
+                            <constraint firstAttribute="top" secondItem="BBC-7w-YQF" secondAttribute="top" id="kPB-Oa-woF"/>
                             <constraint firstItem="ImQ-9h-7XN" firstAttribute="leading" secondItem="S5P-uL-QO5" secondAttribute="leading" constant="16" id="nnx-EJ-i83"/>
+                            <constraint firstItem="BBC-7w-YQF" firstAttribute="leading" secondItem="S5P-uL-QO5" secondAttribute="leading" id="r3n-aJ-Zmb"/>
+                            <constraint firstItem="S5P-uL-QO5" firstAttribute="trailing" secondItem="BBC-7w-YQF" secondAttribute="trailing" id="sMl-2Q-1dT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="추천 레시피" id="fdh-ql-eiX"/>
                     <connections>
+                        <outlet property="collectionVeiwY" destination="hmE-iX-Ybb" id="zjX-IM-vFq"/>
                         <outlet property="collectionView" destination="ImQ-9h-7XN" id="MrH-eJ-arO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8T9-Lw-Ed9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="522" y="2424"/>
+            <point key="canvasLocation" x="1485" y="2600"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="8Vj-Hr-Lap">
-            <size key="intrinsicContentSize" width="55" height="31"/>
-        </designable>
-        <designable name="Cy8-rJ-s7N">
-            <size key="intrinsicContentSize" width="60.333333333333336" height="39"/>
-        </designable>
-        <designable name="F5a-qK-QEb">
-            <size key="intrinsicContentSize" width="96" height="33"/>
-        </designable>
-        <designable name="G0t-NU-Dqj">
-            <size key="intrinsicContentSize" width="51.333333333333336" height="37.666666666666664"/>
-        </designable>
-        <designable name="GoZ-TS-Uif">
-            <size key="intrinsicContentSize" width="125" height="39"/>
-        </designable>
-        <designable name="M5y-oB-W93">
-            <size key="intrinsicContentSize" width="51.333333333333336" height="33"/>
-        </designable>
-        <designable name="OJp-bp-ZfE">
-            <size key="intrinsicContentSize" width="56.666666666666664" height="43.666666666666664"/>
-        </designable>
-        <designable name="Qqi-xS-C4s">
-            <size key="intrinsicContentSize" width="101.66666666666667" height="39"/>
-        </designable>
-        <designable name="SyX-6u-xEY">
-            <size key="intrinsicContentSize" width="78.666666666666671" height="51.666666666666664"/>
-        </designable>
-        <designable name="Wi7-cB-bNI">
-            <size key="intrinsicContentSize" width="144.33333333333334" height="39"/>
-        </designable>
-        <designable name="ZFM-0A-48K">
-            <size key="intrinsicContentSize" width="51.333333333333336" height="33"/>
-        </designable>
-        <designable name="bR6-Re-5rm">
-            <size key="intrinsicContentSize" width="51.333333333333336" height="33"/>
-        </designable>
-        <designable name="ezJ-HY-Psh">
-            <size key="intrinsicContentSize" width="60.333333333333336" height="39"/>
-        </designable>
-        <designable name="iQU-Gu-tfC">
-            <size key="intrinsicContentSize" width="101.66666666666667" height="39"/>
-        </designable>
-        <designable name="ia1-Ui-m7V">
-            <size key="intrinsicContentSize" width="60.333333333333336" height="39"/>
-        </designable>
-        <designable name="kDY-P4-rcy">
-            <size key="intrinsicContentSize" width="125" height="39"/>
-        </designable>
-        <designable name="ncK-Tj-T9N">
-            <size key="intrinsicContentSize" width="65" height="33"/>
-        </designable>
-        <designable name="uk7-Bf-EcZ">
-            <size key="intrinsicContentSize" width="60.333333333333336" height="39"/>
-        </designable>
-        <designable name="v9D-2M-D94">
-            <size key="intrinsicContentSize" width="54" height="44"/>
-        </designable>
-        <designable name="wiR-CB-AnN">
-            <size key="intrinsicContentSize" width="51.333333333333336" height="33"/>
-        </designable>
-        <designable name="xZi-Ci-SLS">
-            <size key="intrinsicContentSize" width="60.333333333333336" height="39"/>
-        </designable>
-    </designables>
-    <inferredMetricsTieBreakers>
-        <segue reference="Eh2-f0-OqO"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.backward" catalog="system" width="128" height="98"/>
         <image name="audience" width="512" height="512"/>

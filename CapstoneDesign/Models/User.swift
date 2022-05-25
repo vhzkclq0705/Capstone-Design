@@ -8,6 +8,7 @@
 import Foundation
 
 struct User {
+    
     var id: String
     var userInfoOpen: Bool
     var pushAlarm: Bool

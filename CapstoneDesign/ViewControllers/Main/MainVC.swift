@@ -20,7 +20,7 @@ class MainVC: UIViewController {
     @IBOutlet weak var deleteStackView: UIStackView!
     @IBOutlet weak var clearLabel: UILabel!
     
-    let viewModel = FoodViewModel.shared
+    let viewModel = MainViewModel.shared
     var isDeleting = false
 
     override func viewDidLoad() {
@@ -30,6 +30,9 @@ class MainVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        viewModel.loadFoods()
+        collectionView.reloadData()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(reciveNotification(_:)), name: Notification.Name.name, object: nil)
     }
     
@@ -54,7 +57,7 @@ extension MainVC: UICollectionViewDataSource, UICollectionViewDelegate {
         guard let cell = collectionView.cellForItem(at: indexPath) as? MyFoodCell else { return }
         
         if isDeleting {
-            viewModel.checkDeleteFood(indexPath.item)
+            viewModel.checkDeleteFood(viewModel.foods[indexPath.item])
             cell.updateDeleteUI()
         } else {
             performSegue(withIdentifier: "showDetailFood", sender: self)
@@ -63,23 +66,15 @@ extension MainVC: UICollectionViewDataSource, UICollectionViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetailFood" {
-            let vc = segue.destination as? DetailFoodVC
             if let indexPath = collectionView.indexPathsForSelectedItems {
-                let item = indexPath[0].item
-                vc?.food = viewModel.foods[item]
+                viewModel.detailFood = viewModel.foods[indexPath[0].item]
             }
         }
     }
 }
 
-
 extension MainVC {  // Action funcs + Custom funcs
     func setup() {
-        viewModel.loadFoods() { [weak self] in
-            print("Load Successed")
-            self?.collectionView.reloadData()
-        }
-        
         self.collectionView.register(UINib(nibName: "MyFoodCell", bundle: nil), forCellWithReuseIdentifier: MyFoodCell.identifier)
         self.collectionView.collectionViewLayout = createLayout()
         
@@ -100,14 +95,11 @@ extension MainVC {  // Action funcs + Custom funcs
     @IBAction func CorrectButton(_ sender: Any) {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "CorrectFoodVC") as? CorrectFoodVC else { return }
         
-        vc.delegate = self
-        
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func RecommendButton(_ sender: Any) {
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "RecommendVC") as? RecommendVC else { return }
-        vc.foodName
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "RecipeVC") as? RecipeVC else { return }
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -121,16 +113,8 @@ extension MainVC {  // Action funcs + Custom funcs
     }
     
     @IBAction func FinishDeleteButton(_ sender: Any) {
-//        if deleteFoodIndexList.count != 0 {
-//            for i in 0...deleteFoodIndexList.count - 1 {
-//                let delFoodInfo = ["id": foodModel.FoodInfoList[deleteFoodIndexList[i] - i].id]
-//                self.parameters.append(delFoodInfo)
-//                foodModel.FoodInfoList.remove(at: deleteFoodIndexList[i] - i)
-//            }
-//            deleteFoodIndexList.removeAll()
-//        }
-//        DelFoodPost()
-//        DeletingState()
+        viewModel.deleteFoods()
+        DeletingState()
     }
     
     func DeletingState() {
@@ -149,43 +133,5 @@ extension MainVC {  // Action funcs + Custom funcs
     
     @objc func reciveNotification(_ notification: Notification) {
         self.collectionView.reloadData()
-    }
-    
-//    func DelFoodPost() {
-//        let url = "http://3.38.150.193:3000/food/delFood"
-//        var request = URLRequest(url: URL(string: url)!)
-//        request.httpMethod = "POST"
-//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//        request.timeoutInterval = 10
-//
-//        // httpBody 에 parameters 추가
-//        do {
-//            try request.httpBody = JSONSerialization.data(withJSONObject: self.parameters)
-//        } catch {
-//            print("http Body Error")
-//        }
-//
-//        AF.request(request).responseJSON { (response) in
-//            switch response.result {
-//            case .success(let json):
-//                if let jsonData = json as? NSDictionary {
-//                    if let code = jsonData["code"] as? Int {
-//                        if code == 200 {
-//                            print("삭제 완료")
-//                            self.parameters.removeAll()
-//                        }
-//                    }
-//                }
-//            case .failure(let error):
-//                print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
-//            }
-//        }
-//    }
-}
-
-extension MainVC: CompleteCorrectDelegate {
-    func didCorrectFoodDone(_ controller: CorrectFoodVC, data: FoodModel) {
-        //foodModel = data
-        collectionView.reloadData()
     }
 }

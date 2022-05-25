@@ -128,7 +128,7 @@ extension CameraVC: AVCaptureVideoDataOutputSampleBufferDelegate {
                         self.foodList.text = ""
                         self.capturedFoodList = foods
                         self.capturedFoodList = Array(Set(self.capturedFoodList))
-                        self.capturedFoodList = changeEngToKor(foods: self.capturedFoodList)
+                        self.capturedFoodList = translator(self.capturedFoodList)
                     }
                     print("인식된 재료: \(self.capturedFoodList)")
                     if self.capturedFoodList.count > 0 {

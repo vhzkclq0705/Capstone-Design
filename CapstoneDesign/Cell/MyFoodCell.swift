@@ -22,7 +22,7 @@ class MyFoodCell: UICollectionViewCell {
 
 extension MyFoodCell {
     func updateUI(_ food: Food) {
-        imgView.image = UIImage(named: "\(food.name).jpg")
+        imgView.image = UIImage(named: food.name)
         nameLabel.text = food.name
     }
     

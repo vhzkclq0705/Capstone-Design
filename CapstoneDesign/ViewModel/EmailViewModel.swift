@@ -8,7 +8,6 @@
 import Foundation
 
 class EmailViewModel {
-    static let shared = EmailViewModel()
     
     var emails = [Email]()
     

@@ -16,11 +16,11 @@ class ShoppingCell: UITableViewCell {
     var isChecked: Bool = false
     var delegate: ListButtonDelegate?
     
-    @IBAction func CheckList(_ sender: Any) {
+    @IBAction func checkList(_ sender: Any) {
         self.delegate?.CheckList(index: index)
     }
     
-    @IBAction func DeleteList(_ sender: Any) {
+    @IBAction func deleteList(_ sender: Any) {
         self.delegate?.DeleteList(index: index)
     }
 

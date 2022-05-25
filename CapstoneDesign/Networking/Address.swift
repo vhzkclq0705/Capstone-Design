@@ -24,7 +24,8 @@ enum Address: String {
         switch self {
         case .base: return "http://3.38.150.193:3000/"
         case .login: return "user/login"
-        case .foodGet: return "user/signup"
+        case .register: return "user/signup"
+        case .foodGet: return "food/config"
         case .foodAdd: return "food/addFood"
         case .foodDelete: return "food/delfood"
         case .foodCorrect: return "food/chageinfo"

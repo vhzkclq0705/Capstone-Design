@@ -13,7 +13,7 @@ class Crawling {
     
     private init() {}
     
-    static func getDocument(_ names: [String]) -> Document {
+    static func getDocument(_ names: [String], completion: @escaping(Document) -> Void) {
         var components = URLComponents(string: Address.crawling.address)!
         let search = names.joined(separator: " ")
         let queryItem = URLQueryItem(name: "q", value: search)
@@ -22,27 +22,27 @@ class Crawling {
         let html = try! String(contentsOf: components.url!, encoding: .utf8)
         let doc: Document = try! SwiftSoup.parse(html)
         
-        return doc
+        print("doc얻어옴")
+        completion(doc)
     }
     
     static func getTitles(_ doc: Document) -> [String] {
         let elements: Elements = try! doc.select(".rcp_m_list2").select(".common_sp_list_li").select(".common_sp_caption").select(".common_sp_caption_tit")
         
         let titles = elements.map { try! $0.text() }
-        
+
         return titles
     }
     
     static func getImageURLs(_ doc: Document) -> [URL] {
         let elements: Elements = try! doc.select(".rcp_m_list2").select(".common_sp_list_li").select(".common_sp_thumb").select("img")
         
-        var urls = elements.map { try! $0.attr("src") }
-        
-        if let index = urls.firstIndex(of: ".png") {
-            urls.remove(at: index)
+        let urls = elements.map { try! $0.attr("src") }
+        let filter = urls.filter{
+            return !$0.contains(".png")
         }
         
-        let imageURLs = urls.map { URL(string: $0)! }
+        let imageURLs = filter.map { URL(string: $0)! }
         
         return imageURLs
     }

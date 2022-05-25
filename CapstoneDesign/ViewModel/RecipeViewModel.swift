@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftSoup
 
 class RecipeViewModel {
     
@@ -16,16 +17,25 @@ class RecipeViewModel {
         return recipes.count
     }
     
-    func crawling(_ names: [String]) {
-        let doc = Crawling.getDocument(names)
-        let titles = Crawling.getTitles(doc)
-        let imageURLs = Crawling.getImageURLs(doc)
-        let links = Crawling.getLinks(doc)
+    
+    func createReicpe(title: String, imageURL: URL, link: String) -> Recipe {
+        return Recipe(title: title, imageURL: imageURL, link: link)
+    }
+    
+    func crawling(_ isDetail: Bool) {
+        var doc = Document("")
+        let names = FoodManager.shared.foods.map { $0.name }
         
-        for i in 0...titles.count {
-            recipes[i].title = titles[i]
-            recipes[i].imageURL = imageURLs[i]
-            recipes[i].link = links[i]
+        Crawling.getDocument(names) { [weak self] data in
+            doc = data
+            let titles = Crawling.getTitles(doc)
+            let imageURLs = Crawling.getImageURLs(doc)
+            let links = Crawling.getLinks(doc)
+            
+            for i in 0...titles.count - 1 {
+                let recipe = self?.createReicpe(title: titles[i], imageURL: imageURLs[i], link: links[i])
+                self?.recipes.append(recipe!)
+            }
         }
     }
 }

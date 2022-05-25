@@ -16,7 +16,7 @@ class DetailFoodVC: UIViewController {
     @IBOutlet weak var expirationDate: UILabel!
     @IBOutlet weak var memo: UITextView!
     
-    var food: Food?
+    let viewModel = MainViewModel.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,21 @@ class DetailFoodVC: UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        // 숫자가 커질수록 view가 위로 띄어짐
+        detailUI()
+    }
+    
+}
+
+extension DetailFoodVC {    // Action funcs
+    func setup() {
+        foodName.text = viewModel.detailFood.name
+        purchaseDate.text = viewModel.detailFood.purchaseDate
+        expirationDate.text = viewModel.detailFood.expirationDate
+        memo.text = viewModel.detailFood.memo
+        backgroundImg.image = UIImage(named: viewModel.detailFood.name)
+    }
+    
+    func detailUI() {
         let TOP_CARD_DISTANCE: CGFloat = 40.0
         
         // view의 높이
@@ -43,17 +57,6 @@ class DetailFoodVC: UIViewController {
         super.updateViewConstraints()
     }
     
-}
-
-extension DetailFoodVC {    // Action funcs
-    func setup() {
-        foodName.text = food?.name
-        purchaseDate.text = food?.purchaseDate
-        expirationDate.text = food?.expirationDate
-        memo.text = food?.memo
-        backgroundImg.image = UIImage(named: "\(food?.name ?? "미정").jpg")
-    }
-    
     @IBAction func CloseButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -61,7 +64,8 @@ extension DetailFoodVC {    // Action funcs
     @IBAction func FindRecipeButton(_ sender: Any) {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "RecipeVC") as? RecipeVC else { return }
         
-        vc.foodName = food?.name
+        vc.isDetail = true
+        
         present(vc, animated: true, completion: nil)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  RecommendCell.swift
+//  RecipeCell.swift
 //  CapstoneDesign
 //
 //  Created by 권오준 on 2022/05/22.
@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import Kingfisher
 
-class RecommendCell: UICollectionViewCell {
+class RecipeCell: UICollectionViewCell {
     
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -21,7 +21,7 @@ class RecommendCell: UICollectionViewCell {
     }
 }
 
-extension RecommendCell {
+extension RecipeCell {
     func setup() {
         layer.borderColor = UIColor.lightGray.cgColor
         layer.borderWidth = 1

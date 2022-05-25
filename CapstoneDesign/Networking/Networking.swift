@@ -8,29 +8,20 @@
 import Foundation
 import Alamofire
 
-func Alert2(title: String) -> UIAlertController {
-    let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-    let defaultAction = UIAlertAction(title: "확인", style: .cancel)
-    
-    alert.addAction(defaultAction)
-    
-    return alert
-}
-
 enum StatusCode {
     case success
     case fail
     case server
 }
 
-func networking(url: URL, method: HTTPMethod, params: Parameters?, completion: @escaping(NSDictionary, StatusCode) -> Void) {
+private func networking(url: URL, method: HTTPMethod, data: Data?, completion: @escaping(NSDictionary, StatusCode) -> Void) {
     var statusCode: StatusCode = .fail
-    AF.request(url,
-               method: method,
-               parameters: params,
-               encoding: JSONEncoding.default,
-               headers: ["Content-Type":"application/json;charset=utf-8", "Accept":"application/json"])
-    .responseJSON { (response) in
+    var request = URLRequest(url: url)
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.httpBody = data
+    request.method = method
+    
+    AF.request(request).responseJSON { (response) in
         let code = response.response!.statusCode
         switch code {
         case 200...299:
@@ -40,14 +31,13 @@ func networking(url: URL, method: HTTPMethod, params: Parameters?, completion: @
         default:
             statusCode = .server
         }
-        
+
         switch response.result {
         case .success(let json):
             if let data = json as? NSDictionary {
                 completion(data, statusCode)
             }
         case .failure(let error):
-            completion(error as! NSDictionary, statusCode)
             print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
         }
     }
@@ -55,30 +45,47 @@ func networking(url: URL, method: HTTPMethod, params: Parameters?, completion: @
 
 private let baseURL = Address.base.address
 
-func login(_ params: [String: String], completion: @escaping(StatusCode) -> Void) {
+func loginAPI(_ params: [String: String], completion: @escaping(StatusCode) -> Void) {
     guard let url = URL(string: baseURL + Address.login.address) else { return }
+    let data = try! JSONSerialization.data(withJSONObject: params)
     
-    networking(url: url, method: .post, params: params) { _, code in
+    networking(url: url, method: .post, data: data) { _, code in
         completion(code)
     }
 }
 
-func getFood(completion: @escaping([Food], StatusCode) -> Void) {
+func getFoodAPI(completion: @escaping([Food]) -> Void) {
     guard let url = URL(string: baseURL + Address.foodGet.address) else { return }
     
-    networking(url: url, method: .get, params: nil) { data, code in
+    networking(url: url, method: .get, data: nil) { data, code in
         if let food = data["resultUser"] as? [NSDictionary] {
             do {
                 let foodData = try JSONSerialization.data(withJSONObject: food, options: .prettyPrinted)
                 let dataModel = try JSONDecoder().decode([Food].self, from: foodData)
 
-                completion(dataModel, code)
+                completion(dataModel)
             } catch {
                 print(error.localizedDescription)
-                completion([], code)
+                completion([])
             }
         }
     }
 }
 
+func deleteFoodAPI(_ params: [[String: String]], completion: @escaping() -> Void) {
+    guard let url = URL(string: baseURL + Address.foodDelete.address) else { return }
+    let data = try! JSONSerialization.data(withJSONObject: params)
+    
+    networking(url: url, method: .post, data: data) { _, code in
+        completion()
+    }
+}
 
+func correctFoodAPI(_ params: [[String: String]], completion: @escaping() -> Void) {
+    guard let url = URL(string: baseURL + Address.foodCorrect.address) else { return }
+    let data = try! JSONSerialization.data(withJSONObject: params)
+    
+    networking(url: url, method: .put, data: data) { _, code in
+        completion()
+    }
+}
