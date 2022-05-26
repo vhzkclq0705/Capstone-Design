@@ -62,7 +62,7 @@ extension CorrectDetailVC { // Action funcs + Custom funcs
             present(Alert("정보를 모두 입력해 주세요."), animated: true)
             return }
         
-        viewModel.correctDetail(purchaseDate: buyDate.text, expirationdate: endDate.text, memo: memo.text)
+        viewModel.correctDetail(purchaseDate: purchaseDate, expirationdate: expirationDate, memo: memo)
         self.navigationController?.popViewController(animated: true)
     }
     
