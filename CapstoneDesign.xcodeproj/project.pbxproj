@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		18E258F39F8AB5FCE3DDD12B /* Pods_CapstoneDesign.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6719773D2A53A8162AAB0CFD /* Pods_CapstoneDesign.framework */; };
+		7611737D283F8336005141BF /* AddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611737C283F8336005141BF /* AddViewModel.swift */; };
+		7611737F283F97F8005141BF /* AddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611737E283F97F8005141BF /* AddCell.swift */; };
 		7641782E27C37B7D00F85BBD /* DetailFoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7641782D27C37B7D00F85BBD /* DetailFoodVC.swift */; };
 		764BFC7127E49E6400462C52 /* ShoppingListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764BFC7027E49E6400462C52 /* ShoppingListVC.swift */; };
 		764BFC7327E49E7200462C52 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764BFC7227E49E7200462C52 /* CalendarVC.swift */; };
@@ -70,6 +72,8 @@
 /* Begin PBXFileReference section */
 		0DA6DA06F15FD6A809E609CA /* Pods-CapstoneDesign.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneDesign.release.xcconfig"; path = "Target Support Files/Pods-CapstoneDesign/Pods-CapstoneDesign.release.xcconfig"; sourceTree = "<group>"; };
 		6719773D2A53A8162AAB0CFD /* Pods_CapstoneDesign.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CapstoneDesign.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7611737C283F8336005141BF /* AddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewModel.swift; sourceTree = "<group>"; };
+		7611737E283F97F8005141BF /* AddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCell.swift; sourceTree = "<group>"; };
 		7641782D27C37B7D00F85BBD /* DetailFoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFoodVC.swift; sourceTree = "<group>"; };
 		764BFC7027E49E6400462C52 /* ShoppingListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListVC.swift; sourceTree = "<group>"; };
 		764BFC7227E49E7200462C52 /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
@@ -267,6 +271,7 @@
 				76A4A0002838F0F400F84CF8 /* FriendsFoodViewModel.swift */,
 				76E0C7AE283AB79B001B023A /* RecipeViewModel.swift */,
 				76E0C7B7283B976A001B023A /* CorrectViewModel.swift */,
+				7611737C283F8336005141BF /* AddViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -287,11 +292,12 @@
 				76A4A00B2838F41C00F84CF8 /* ShoppingCell.swift */,
 				76A4A00D2838F44800F84CF8 /* CalendarCell.swift */,
 				76A4A00F2838F4DE00F84CF8 /* FirendsFoodCell.swift */,
-				76A4A0112838F56700F84CF8 /* SearchCell.swift */,
 				76CF4FEC28394305005290D5 /* MyFoodCell.swift */,
 				76CF4FED28394305005290D5 /* MyFoodCell.xib */,
 				76E0C7A7283A582B001B023A /* RecipeCell.swift */,
 				76A4A0092838F3B800F84CF8 /* CorrectCell.swift */,
+				76A4A0112838F56700F84CF8 /* SearchCell.swift */,
+				7611737E283F97F8005141BF /* AddCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -480,6 +486,7 @@
 				76A4A00E2838F44800F84CF8 /* CalendarCell.swift in Sources */,
 				76A49FFB2838DBA800F84CF8 /* UserViewModel.swift in Sources */,
 				76E0C7B4283B8F34001B023A /* Alert.swift in Sources */,
+				7611737F283F97F8005141BF /* AddCell.swift in Sources */,
 				76E0C7A8283A582B001B023A /* RecipeCell.swift in Sources */,
 				76E0C7B1283ABEDA001B023A /* Recipe.swift in Sources */,
 				764BFC7527E49E8200462C52 /* FriendsVC.swift in Sources */,
@@ -523,6 +530,7 @@
 				764BFC7327E49E7200462C52 /* CalendarVC.swift in Sources */,
 				76A49FFD2838DC0200F84CF8 /* EmailViewModel.swift in Sources */,
 				76E0C7AA283A59C1001B023A /* Crawling.swift in Sources */,
+				7611737D283F8336005141BF /* AddViewModel.swift in Sources */,
 				76A49FF32838D5E400F84CF8 /* User.swift in Sources */,
 				766924E427969B0D00DB0795 /* SceneDelegate.swift in Sources */,
 			);

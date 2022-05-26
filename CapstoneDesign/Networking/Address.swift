@@ -28,7 +28,7 @@ enum Address: String {
         case .foodGet: return "food/config"
         case .foodAdd: return "food/addFood"
         case .foodDelete: return "food/delfood"
-        case .foodCorrect: return "food/chageinfo"
+        case .foodCorrect: return "food/changeinfo"
         case .userInfo: return "userinfo/config"
         case .emailGet: return "userinfo/search"
         case .friendGet: return "userinfo/otheruser"

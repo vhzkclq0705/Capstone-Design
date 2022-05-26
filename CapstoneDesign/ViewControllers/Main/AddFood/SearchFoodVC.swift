@@ -17,17 +17,11 @@ class SearchFoodVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet weak var compleButton: ButtonStyle!
     
     let searchController = UISearchController(searchResultsController: nil)
-    
-    var foodList = ["감자", "고추", "당근", "대파", "돼지고기", "딸기", "마늘", "무", "바나나", "버섯", "사과", "생선", "양배추", "양파", "오렌지", "토마토", "포도", "피망"]
-    
-    // 선택한 재료 리스트
-    var selectedFoodList = [String]()
+    let viewModel = AddViewModel.shared
     
     // 우상단 버튼 클릭 시 테이블 뷰가 변경되게 하는 변수
-    var changedList = false
-    
+    var isChanged = false
     // 검색창
-    var searchList = [String]()
     var isFiltering: Bool {
         let isSearching = searchBar.text?.isEmpty == false
         return isSearching
@@ -35,76 +29,61 @@ class SearchFoodVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = SetBackButton()
         
-        titleLable.isHidden = true
-        searchBar.layer.borderWidth = 1
-        searchBar.layer.borderColor = UIColor.white.cgColor
-        
+        setup()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        if searchController.isActive {
-            searchController.isActive = false
-        }
+        searchController.isActive = !searchController.isActive
     }
-    
+}
+extension SearchFoodVC {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if changedList {
-            return selectedFoodList.count
-        }
-        else {
-            return isFiltering ? searchList.count : foodList.count
+        if isChanged {
+            return viewModel.numOfFoods
+        } else {
+            return isFiltering ? viewModel.numOfSearching : viewModel.numOfList
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? SearchFoodCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? SearchCell else { return UITableViewCell() }
         
-        if changedList {
-            cell.nameLabel.text = selectedFoodList[indexPath.row]
-            cell.imgView.image = UIImage(named: "\(selectedFoodList[indexPath.row]).jpg")
-            tableView.allowsSelection = false
+        if isChanged {
+            cell.updateUI(viewModel.foods[indexPath.row].name)
+        } else {
+            isFiltering ? cell.updateUI(viewModel.searchTerm[indexPath.row]) :
+            cell.updateUI(viewModel.list[indexPath.row])
         }
-        else {
-            tableView.allowsSelection = true
-            if isFiltering {
-                cell.nameLabel.text = searchList[indexPath.row]
-                cell.imgView.image = UIImage(named: "\(searchList[indexPath.row]).jpg")
-            }
-            else {
-                cell.nameLabel.text = foodList[indexPath.row]
-                cell.imgView.image = UIImage(named: "\(foodList[indexPath.row]).jpg")
-            }
-        }
+        
+        tableView.allowsSelection = !isChanged
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? SearchFoodCell else { return }
-        let selectedFood = cell.nameLabel.text
+        isFiltering ? viewModel.checkAddFood(viewModel.searchTerm[indexPath.row]) :
+        viewModel.checkAddFood(viewModel.list[indexPath.row])
         
-        if let index = selectedFoodList.firstIndex(of: selectedFood!) {
-            selectedFoodList.remove(at: index)
-        }
-        else {
-            selectedFoodList.append(selectedFood!)
-        }
-        
-        selectedFoodList = Array(Set(selectedFoodList))
-        selectedFoodList.sort()
-        
-        // 우상단 추가된 재료의 개수 표시
-        addButton.titleLabel?.text = "추가하기(\(selectedFoodList.count))"
-        
-        if selectedFoodList.count > 0 {
-            compleButton.isEnabled = true
-        }
-        
-        print(selectedFoodList)
-        
+        compleButton.isEnabled = !viewModel.foods.isEmpty
         searchBar.searchTextField.endEditing(true)
+    }
+}
+
+extension SearchFoodVC {
+    func setup() {
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = SetBackButton()
+        
+        searchBar.layer.borderWidth = 1
+        searchBar.layer.borderColor = UIColor.white.cgColor
+    }
+    
+    func changeState() {
+        titleLable.isHidden = isChanged
+        searchBar.isHidden = !isChanged
+        isChanged = !isChanged
+        
+        tableView.reloadData()
     }
     
     @IBAction func ShowFoodButton(_ sender: Any) {
@@ -112,59 +91,24 @@ class SearchFoodVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     @IBAction func CompleteButton(_ sender: Any) {
-        if changedList {
-           guard let vc = storyboard?.instantiateViewController(withIdentifier: "SetAddFoodVC") as? SetAddFoodVC else { return }
-            vc.resultFoodList = selectedFoodList
+        if isChanged {
+            guard let vc = storyboard?.instantiateViewController(withIdentifier: "SetAddFoodVC") as? SetAddFoodVC else { return }
+            viewModel.searchTerm.removeAll()
             
             self.navigationController?.pushViewController(vc, animated: true)
-            changedList = false
-        }
-        else {
-            Alert(title: "선택된 재료를 확인해 주세요.")
+        } else {
+            present(Alert("선택된 재료를 확인해 주세요."), animated: true)
         }
         
-    }
-    
-    func changeState() {
-        addButton.titleLabel?.text = "추가하기(\(selectedFoodList.count))"
-        if changedList {
-            titleLable.isHidden = true
-            searchBar.isHidden = false
-            changedList = false
-        }
-        else {
-            searchBar.isHidden = true
-            titleLable.isHidden = false
-            changedList = true
-        }
-        
-        tableView.reloadData()
-    }
-    
-    func Alert(title: String) {
-        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-        
-        let defaultAction = UIAlertAction(title: "확인", style: .cancel) {_ in
-            self.changeState()
-        }
-        
-        alert.addAction(defaultAction)
-        present(alert, animated: true, completion: nil)
+        changeState()
     }
 }
 
 extension SearchFoodVC: UISearchBarDelegate {
     // 검색창에 text입력 시
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchList = foodList.filter { $0.contains(searchText) }
+        viewModel.searching(searchText)
         
         tableView.reloadData()
     }
-}
-
-class SearchFoodCell: UITableViewCell {
-    
-    @IBOutlet weak var imgView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    
 }

@@ -48,7 +48,8 @@ class CameraVC: UIViewController {
     
     @IBAction func CompleteButton(_ sender: Any) {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "SetAddFoodVC") as? SetAddFoodVC else { return }
-         vc.resultFoodList = capturedFoodList
+        //let viewModel = AddViewModel.shared
+        //viewModel.addDetail(purchaseDate: <#T##String#>, expirationdate: <#T##String#>, memo: <#T##String#>)
          
          self.navigationController?.pushViewController(vc, animated: true)
     }

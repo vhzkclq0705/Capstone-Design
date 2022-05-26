@@ -24,14 +24,18 @@ class CorrectViewModel {
             foods[index].purchaseDate = purchaseDate
             foods[index].expirationDate = expirationdate
             foods[index].memo = memo
+            
+            print("\(foods[index].name) 수정")
         }
     }
     
-    func correctFoods() {
-        FoodManager.shared.correctFood(foods)
+    func correctFoods(completion: @escaping () -> Void) {
+        FoodManager.shared.correctFood(foods) {
+            completion()
+        }
     }
     
     func loadFoods() {
-        self.foods = FoodManager.shared.foods
+        foods = FoodManager.shared.foods
     }
 }

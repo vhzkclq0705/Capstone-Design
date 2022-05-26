@@ -22,7 +22,6 @@ class Crawling {
         let html = try! String(contentsOf: components.url!, encoding: .utf8)
         let doc: Document = try! SwiftSoup.parse(html)
         
-        print("doc얻어옴")
         completion(doc)
     }
     
@@ -39,7 +38,7 @@ class Crawling {
         
         let urls = elements.map { try! $0.attr("src") }
         let filter = urls.filter{
-            return !$0.contains(".png")
+            return $0 != "https://recipe1.ezmember.co.kr/img/icon_vod.png"
         }
         
         let imageURLs = filter.map { URL(string: $0)! }

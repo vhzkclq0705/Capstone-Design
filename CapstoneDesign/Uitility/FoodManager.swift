@@ -14,13 +14,15 @@ class FoodManager {
     
     private init() {}
     
-    func createFood(name: String, purchaseDate: String, expirationdate: String, memo: String) -> Food {
-        return Food(id: nil, name: name, purchaseDate: purchaseDate, expirationDate: expirationdate, memo: memo)
-    }
-    
-    func addFoods(_ foods: [Food]) {
-        
-        // 서버로 전송
+    func addFoods(_ foods: [Food], completion: @escaping () -> Void) {
+        let params = foods.map { ["foodName": $0.name, "foodPurchaseDate": $0.purchaseDate,
+                                  "foodExpirationDate": $0.expirationDate, "foodMemo": $0.memo] }
+        print(params)
+        addFoodAPI(params) { [weak self] in
+            self?.foods += foods
+            print("Add Successed!")
+            completion()
+        }
     }
     
     func deleteFoods(_ foods: [Food]) {
@@ -37,7 +39,7 @@ class FoodManager {
         }
     }
     
-    func correctFood(_ foods: [Food]) {
+    func correctFood(_ foods: [Food], completion: @escaping () -> Void) {
         let params = foods.map {
             ["id": $0.id!, "foodPurchaseDate": $0.purchaseDate,
              "foodExpirationDate": $0.expirationDate, "foodMemo": $0.memo] }
@@ -46,6 +48,7 @@ class FoodManager {
             self.foods = foods
             
             print("Correct Successed!")
+            completion()
         }
     }
     

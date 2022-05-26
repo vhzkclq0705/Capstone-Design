@@ -1,14 +1,15 @@
 //
-//  CorrectCell.swift
+//  AddCell.swift
 //  CapstoneDesign
 //
-//  Created by 권오준 on 2022/05/21.
+//  Created by 권오준 on 2022/05/26.
 //
 
+import Foundation
 import UIKit
 
-class CorrectCell: UITableViewCell {
-
+class AddCell: UITableViewCell {
+    
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -16,5 +17,4 @@ class CorrectCell: UITableViewCell {
         imgView.image = UIImage(named: food.name)
         nameLabel.text = food.name
     }
-
 }

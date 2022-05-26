@@ -34,6 +34,6 @@ class MainViewModel {
     }
     
     func loadFoods() {
-        self.foods = FoodManager.shared.foods
+        foods = FoodManager.shared.foods
     }
 }

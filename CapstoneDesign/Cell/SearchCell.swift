@@ -12,8 +12,8 @@ class SearchCell: UITableViewCell {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
-    func update(_ food: Food) {
-        imgView.image = UIImage(named: food.name)
-        nameLabel.text = food.name
+    func updateUI(_ name: String) {
+        imgView.image = UIImage(named: name)
+        nameLabel.text = name
     }
 }

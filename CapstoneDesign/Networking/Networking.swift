@@ -54,6 +54,15 @@ func loginAPI(_ params: [String: String], completion: @escaping(StatusCode) -> V
     }
 }
 
+func registAPI(_ params: [String: String], completion: @escaping(StatusCode) -> Void) {
+    guard let url = URL(string: baseURL + Address.register.address) else { return }
+    let data = try! JSONSerialization.data(withJSONObject: params)
+    
+    networking(url: url, method: .post, data: data) { _, code in
+        completion(code)
+    }
+}
+
 func getFoodAPI(completion: @escaping([Food]) -> Void) {
     guard let url = URL(string: baseURL + Address.foodGet.address) else { return }
     
@@ -69,6 +78,15 @@ func getFoodAPI(completion: @escaping([Food]) -> Void) {
                 completion([])
             }
         }
+    }
+}
+
+func addFoodAPI(_ params: [[String: String]], completion: @escaping() -> Void) {
+    guard let url = URL(string: baseURL + Address.foodAdd.address) else { return }
+    let data = try! JSONSerialization.data(withJSONObject: params)
+    
+    networking(url: url, method: .post, data: data) { _, code in
+        completion()
     }
 }
 

@@ -32,8 +32,6 @@ class MainVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         viewModel.loadFoods()
         collectionView.reloadData()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(reciveNotification(_:)), name: Notification.Name.name, object: nil)
     }
     
 }

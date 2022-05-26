@@ -7,10 +7,6 @@
 
 import UIKit
 
-//protocol EditCorrectFoodDelegate {
-//    func didCorrectFoodEditDone(_ controller: CorrectDetailVC, data: FoodInfo)
-//}
-
 class CorrectDetailVC: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
@@ -20,8 +16,6 @@ class CorrectDetailVC: UIViewController, UITableViewDelegate {
     @IBOutlet weak var endDate: UITextField!
     @IBOutlet weak var memo: UITextView!
     
-    //var delegate: EditCorrectFoodDelegate?
-    //var food: Food?
     let viewModel = CorrectViewModel.shared
     let datePicker = UIDatePicker(frame: CGRect(x: 0, y: 0, width: 390, height: 216))
     
@@ -37,6 +31,9 @@ extension CorrectDetailVC { // Action funcs + Custom funcs
     func setup() {
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = SetBackButton()
         
+        memo.layer.borderWidth = 1
+        memo.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        
         imageView.image = UIImage(named: viewModel.detailFood.name)
         foodTitle.text = viewModel.detailFood.name
         buyDate.text = viewModel.detailFood.purchaseDate
@@ -45,17 +42,6 @@ extension CorrectDetailVC { // Action funcs + Custom funcs
     }
 
     @IBAction func CompleteButton(_ sender: Any) {
-//        if delegate != nil {
-//            food?.purchaseDate = buyDate.text!
-//            foodInfo.foodExpirationDate = endDate.text!
-//            if memo.text == "메모를 입력하세요." {
-//                foodInfo.foodMemo = ""
-//            }
-//            else {
-//                foodInfo.foodMemo = memo.text
-//            }
-//            delegate?.didCorrectFoodEditDone(self, data: foodInfo)
-//        }
         guard let purchaseDate = buyDate.text, purchaseDate.isEmpty == false,
                 let expirationDate = endDate.text, expirationDate.isEmpty == false,
               let memo = memo.text, memo.isEmpty == false else {
