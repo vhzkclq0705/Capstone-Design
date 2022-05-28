@@ -22,18 +22,18 @@
      실시간 식재료 인식               크롤링
 
 ## 코드 리팩토링
-- 1차 리팩토링
+- 1차 리팩토링 (2022.04.28)
   > ViewController 데이터 전달 시 Model의 형태로 전달
   > 
   > isDeleting() 내부 중복 코드 삭제
 
-- 2차 리팩토링
+- 2차 리팩토링 (2022.05.02)
   > Model에 들어있는 dummy값들 모두 삭제
   > 
   > 서버의 url 변경으로 인한 코드 수정 
 
-- 3차 리팩토링 (본격적인 리팩토링 시작)
-  > MVVM패턴 적용을 위한 Model 분리, ViewModel 생성 (기존에는 ViewModel이 없었다.)
+- 3차 리팩토링 (2022.05.25)
+  > MVVM패턴 일부 적용
   > 
   > API 통합을 위해 Networking 파일 생성 (진행 중)
   > 
@@ -45,6 +45,18 @@
   > 
   > 크롤링해서 받아온 이미지 url을 쉽게 적용하기 위해 Kingfisher 라이브러리 적용
   
+- 4차 리팩토링 (2022.05.29)
+  > MVVM 패턴 모두 적용 완료
+  > 
+  > Networking 구현 완료(Escaping Closure -> Result 타입으로 변환 예정)
+  > 
+  > 크롤링을 위한 Crawling 파일 생성
+  > 
+  > 기능이 겹치는 ViewController들 일부 통합
+  > 
+  > cancle 기능만 있는 AlertController 전역화
+  > 
+  > 식재료 통합 관리를 위한 FoodManager를 싱글톤 패턴으로 생성
 
 ## 사용한 라이브러리
 - Alamofire
