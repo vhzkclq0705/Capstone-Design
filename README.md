@@ -21,6 +21,10 @@
 
      실시간 식재료 인식               크롤링
 
+## 앱 시연 영상 링크
+
+[아이디어붐](http://www.ideaboom.net/project/project/view?seq=1139)
+
 ## 코드 리팩토링
 - 1차 리팩토링 (2022.04.28)
   > ViewController 데이터 전달 시 Model의 형태로 전달
