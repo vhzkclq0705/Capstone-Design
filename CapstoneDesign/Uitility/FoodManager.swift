@@ -11,13 +11,14 @@ class FoodManager {
     static let shared = FoodManager()
     
     var foods = [Food]()
+    var detailFood: Food!
     
     private init() {}
     
     func addFoods(_ foods: [Food], completion: @escaping () -> Void) {
         let params = foods.map { ["foodName": $0.name, "foodPurchaseDate": $0.purchaseDate,
                                   "foodExpirationDate": $0.expirationDate, "foodMemo": $0.memo] }
-        print(params)
+        
         addFoodAPI(params) { [weak self] in
             self?.foods += foods
             print("Add Successed!")

@@ -34,6 +34,7 @@ class LoginVC: UIViewController {
             }
             else {
                 print("Login Successed!")
+                User.shared.setID(id)
                 FoodManager.shared.loadFoods {
                     guard let vc = self?.storyboard?.instantiateViewController(withIdentifier: "MainNaviVC") else { return }
                     

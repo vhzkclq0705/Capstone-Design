@@ -31,7 +31,7 @@ enum Address: String {
         case .foodCorrect: return "food/changeinfo"
         case .userInfo: return "userinfo/config"
         case .emailGet: return "userinfo/search"
-        case .friendGet: return "userinfo/otheruser"
+        case .friendGet: return "userinfo/otheruser/"
         default: return "https://www.10000recipe.com/recipe/list.html?"
         }
     }

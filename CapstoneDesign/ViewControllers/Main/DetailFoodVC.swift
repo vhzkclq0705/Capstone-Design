@@ -16,7 +16,7 @@ class DetailFoodVC: UIViewController {
     @IBOutlet weak var expirationDate: UILabel!
     @IBOutlet weak var memo: UITextView!
     
-    let viewModel = MainViewModel.shared
+    var food: Food!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +32,11 @@ class DetailFoodVC: UIViewController {
 
 extension DetailFoodVC {    // Action funcs
     func setup() {
-        foodName.text = viewModel.detailFood.name
-        purchaseDate.text = viewModel.detailFood.purchaseDate
-        expirationDate.text = viewModel.detailFood.expirationDate
-        memo.text = viewModel.detailFood.memo
-        backgroundImg.image = UIImage(named: viewModel.detailFood.name)
+        foodName.text = food.name
+        purchaseDate.text = food.purchaseDate
+        expirationDate.text = food.expirationDate
+        memo.text = food.memo
+        backgroundImg.image = UIImage(named: food.name)
     }
     
     func detailUI() {

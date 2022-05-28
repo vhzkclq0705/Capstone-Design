@@ -12,7 +12,7 @@ class CalendarCell: UITableViewCell {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
-    func update(_ food: Food) {
+    func updateUI(_ food: Food) {
         imgView.image = UIImage(named: food.name)
         nameLabel.text = food.name
     }

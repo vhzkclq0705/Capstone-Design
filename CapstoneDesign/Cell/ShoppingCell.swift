@@ -10,18 +10,24 @@ import UIKit
 class ShoppingCell: UITableViewCell {
 
     @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var check: UIButton!
-    @IBOutlet weak var delete: UIButton!
-    var index: Int = 0
-    var isChecked: Bool = false
-    var delegate: ListButtonDelegate?
+    @IBOutlet weak var checkButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
     
-    @IBAction func checkList(_ sender: Any) {
-        self.delegate?.CheckList(index: index)
-    }
-    
-    @IBAction func deleteList(_ sender: Any) {
-        self.delegate?.DeleteList(index: index)
-    }
+    var deleteButtonHandler: (() -> Void)?
+}
 
+extension ShoppingCell {
+    func updateUI(_ todo: Todo) {
+        title.text = todo.memo
+    }
+    
+    @IBAction func checkButtonTapped(_ sender: Any) {
+        checkButton.isSelected = !checkButton.isSelected
+        title.layer.opacity = checkButton.isSelected ? 0.3 : 1
+        checkButton.layer.opacity = checkButton.isSelected ? 0.3 : 1
+    }
+    
+    @IBAction func deleteButtonTapped(_ sender: Any) {
+        deleteButtonHandler?()
+    }
 }

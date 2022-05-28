@@ -555,7 +555,7 @@
                                                     <fontDescription key="titleFontDescription" name="TmonMonsoriBlack" family="TmonMonsori" pointSize="25"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="ShoppingList:" destination="US6-xS-iQv" eventType="touchUpInside" id="Zia-Cj-hYz"/>
+                                                    <segue destination="tjc-Ez-2gs" kind="push" id="Hvv-Fq-2SC"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -581,7 +581,7 @@
                                                     <fontDescription key="titleFontDescription" name="TmonMonsoriBlack" family="TmonMonsori" pointSize="25"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="Calendar:" destination="US6-xS-iQv" eventType="touchUpInside" id="TWa-Nc-qn5"/>
+                                                    <segue destination="OH2-VJ-vUL" kind="push" id="r4f-IS-pMj"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -604,7 +604,7 @@
                                                     <fontDescription key="titleFontDescription" name="TmonMonsoriBlack" family="TmonMonsori" pointSize="25"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="Friends:" destination="US6-xS-iQv" eventType="touchUpInside" id="Hp8-6N-u5l"/>
+                                                    <segue destination="YTY-ah-Zsx" kind="push" id="Xlc-ER-Obh"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -627,7 +627,7 @@
                                                     <fontDescription key="titleFontDescription" name="TmonMonsoriBlack" family="TmonMonsori" pointSize="25"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="Settings:" destination="US6-xS-iQv" eventType="touchUpInside" id="r6O-0V-H1O"/>
+                                                    <segue destination="Ukp-fe-Opb" kind="push" id="ZTf-yE-Klq"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1470,7 +1470,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QlL-HY-FO1" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="44" width="390" height="443"/>
+                                <rect key="frame" x="0.0" y="88" width="390" height="399"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="eventDefaultColor">
@@ -1512,14 +1512,14 @@
                                 </connections>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oq7-yK-MuU">
-                                <rect key="frame" x="0.0" y="444" width="390" height="366"/>
+                                <rect key="frame" x="0.0" y="488" width="390" height="322"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IdI-Dc-xkf">
                                         <rect key="frame" x="16" y="43" width="358" height="272"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="tQ8-HD-M2n" customClass="CalendarCustomCell" customModule="CapstoneDesign" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="tQ8-HD-M2n" customClass="CalendarCell" customModule="CapstoneDesign" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="44.666666030883789" width="358" height="43.666667938232422"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tQ8-HD-M2n" id="GE9-ZK-0aH">
@@ -1540,8 +1540,8 @@
                                                     </subviews>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="imgView" destination="hX6-An-J9f" id="Dj3-lC-t0m"/>
-                                                    <outlet property="nameLabel" destination="Nlt-fn-w4s" id="qJ2-Q4-on4"/>
+                                                    <outlet property="imgView" destination="hX6-An-J9f" id="AyV-fK-N4O"/>
+                                                    <outlet property="nameLabel" destination="Nlt-fn-w4s" id="rdS-S0-OYP"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -1595,10 +1595,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ij3-De-OwR">
-                                <rect key="frame" x="16" y="54" width="358" height="644"/>
+                                <rect key="frame" x="16" y="98" width="358" height="600"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="70" id="UBg-u2-rV3" customClass="ListCell" customModule="CapstoneDesign" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="70" id="UBg-u2-rV3" customClass="ShoppingCell" customModule="CapstoneDesign" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.666666030883789" width="358" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UBg-u2-rV3" id="Bh2-EG-WDL">
@@ -1622,7 +1622,7 @@
                                                         <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </buttonConfiguration>
                                                     <connections>
-                                                        <action selector="DeleteList:" destination="UBg-u2-rV3" eventType="touchUpInside" id="KPV-GF-VWq"/>
+                                                        <action selector="deleteButtonTapped:" destination="UBg-u2-rV3" eventType="touchUpInside" id="F5H-RU-wQZ"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uvh-4B-TTE">
@@ -1635,15 +1635,15 @@
                                                         <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </buttonConfiguration>
                                                     <connections>
-                                                        <action selector="CheckList:" destination="UBg-u2-rV3" eventType="touchUpInside" id="Z8T-JC-bXP"/>
+                                                        <action selector="checkButtonTapped:" destination="UBg-u2-rV3" eventType="touchUpInside" id="cps-XN-pL0"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="check" destination="Uvh-4B-TTE" id="vdL-w7-pKA"/>
-                                            <outlet property="delete" destination="aX5-BB-9Um" id="zcV-0a-hMk"/>
-                                            <outlet property="title" destination="OOa-lz-XJ8" id="PFe-Tu-Ahu"/>
+                                            <outlet property="checkButton" destination="Uvh-4B-TTE" id="k1b-LI-Lcf"/>
+                                            <outlet property="deleteButton" destination="aX5-BB-9Um" id="FVE-sg-rdl"/>
+                                            <outlet property="title" destination="OOa-lz-XJ8" id="BwN-YV-g87"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1800,9 +1800,8 @@
                                             </subviews>
                                         </collectionViewCellContentView>
                                         <connections>
-                                            <outlet property="imgView" destination="Qre-n5-gau" id="E3F-Xn-cd6"/>
-                                            <outlet property="nameLabel" destination="8Te-rN-5qU" id="FaV-oF-roo"/>
-                                            <segue destination="voT-Gt-wIr" kind="presentation" identifier="showFriendsFood" id="c9Y-fb-mrr"/>
+                                            <outlet property="imgView" destination="Qre-n5-gau" id="oIq-dH-D7R"/>
+                                            <outlet property="nameLabel" destination="8Te-rN-5qU" id="SJs-zS-toh"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -1829,116 +1828,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hd0-Iw-MYR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5173.8461538461534" y="1968.4834123222747"/>
-        </scene>
-        <!--Detail Friends FoodVC-->
-        <scene sceneID="z6I-nt-wOA">
-            <objects>
-                <viewController id="voT-Gt-wIr" customClass="DetailFriendsFoodVC" customModule="CapstoneDesign" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="aZc-Tf-Xeg">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="7QH-2R-lYW">
-                                <rect key="frame" x="75" y="64" width="240" height="335.66666666666669"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="식재료 이름" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1g-aM-vCz">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="37.666666666666664"/>
-                                        <fontDescription key="fontDescription" name="TmonMonsoriBlack" family="TmonMonsori" pointSize="30"/>
-                                        <color key="textColor" name="Sky"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="tBn-gZ-338">
-                                        <rect key="frame" x="0.0" y="62.666666666666671" width="240" height="60"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yVV-OQ-x7z">
-                                                <rect key="frame" x="0.0" y="0.0" width="93.333333333333329" height="60"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="구매 날짜" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oW4-sw-Li4">
-                                                        <rect key="frame" x="0.0" y="0.0" width="93.333333333333329" height="25"/>
-                                                        <fontDescription key="fontDescription" name="TmonMonsoriBlack" family="TmonMonsori" pointSize="20"/>
-                                                        <color key="textColor" name="Sky"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="유통 기한" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Urv-Jb-tsu">
-                                                        <rect key="frame" x="0.0" y="34.999999999999986" width="93.333333333333329" height="25"/>
-                                                        <fontDescription key="fontDescription" name="TmonMonsoriBlack" family="TmonMonsori" pointSize="20"/>
-                                                        <color key="textColor" name="Sky"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6M0-tF-WMl">
-                                                <rect key="frame" x="118.33333333333334" y="0.0" width="121.66666666666666" height="60"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2022-02-22" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5g-lV-kh9">
-                                                        <rect key="frame" x="0.0" y="0.0" width="121.66666666666667" height="25"/>
-                                                        <fontDescription key="fontDescription" name="TmonMonsoriBlack" family="TmonMonsori" pointSize="20"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2022-02-22" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCE-Rk-5me">
-                                                        <rect key="frame" x="0.0" y="34.999999999999986" width="121.66666666666667" height="25"/>
-                                                        <fontDescription key="fontDescription" name="TmonMonsoriBlack" family="TmonMonsori" pointSize="20"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                    </stackView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="메모" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xZc-6d-dZu">
-                                        <rect key="frame" x="0.0" y="147.66666666666666" width="240" height="129.99999999999997"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="130" id="lJq-FZ-Krz"/>
-                                        </constraints>
-                                        <color key="textColor" systemColor="labelColor"/>
-                                        <fontDescription key="fontDescription" name="TmonMonsoriBlack" family="TmonMonsori" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bR6-Re-5rm" customClass="ButtonStyle" customModule="CapstoneDesign" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="302.66666666666669" width="240" height="33"/>
-                                        <color key="backgroundColor" systemColor="systemGrayColor"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="확인">
-                                            <fontDescription key="titleFontDescription" name="TmonMonsoriBlack" family="TmonMonsori" pointSize="15"/>
-                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </buttonConfiguration>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="CloseButton:" destination="voT-Gt-wIr" eventType="touchUpInside" id="8JW-te-4AM"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.15000000596046448" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pEg-fJ-nbg">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="420"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="vf9-he-jy4"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="7QH-2R-lYW" firstAttribute="centerX" secondItem="vf9-he-jy4" secondAttribute="centerX" id="1XI-JU-R6H"/>
-                            <constraint firstItem="7QH-2R-lYW" firstAttribute="top" secondItem="vf9-he-jy4" secondAttribute="top" constant="20" id="lHC-dO-uN6"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="backgroundImg" destination="pEg-fJ-nbg" id="nXF-SF-h9x"/>
-                        <outlet property="expirationDate" destination="GCE-Rk-5me" id="QaM-6W-TiJ"/>
-                        <outlet property="foodName" destination="C1g-aM-vCz" id="QFn-8Y-PVZ"/>
-                        <outlet property="memo" destination="xZc-6d-dZu" id="kBm-gs-iNZ"/>
-                        <outlet property="purchaseDate" destination="f5g-lV-kh9" id="2zG-nF-pjs"/>
-                        <outlet property="stackView" destination="7QH-2R-lYW" id="f6m-Mm-odE"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7td-MX-961" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6129" y="1969"/>
         </scene>
         <!--재료 수정하기-->
         <scene sceneID="tra-A2-qB9">

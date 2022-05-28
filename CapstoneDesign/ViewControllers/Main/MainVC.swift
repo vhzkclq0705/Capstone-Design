@@ -58,15 +58,15 @@ extension MainVC: UICollectionViewDataSource, UICollectionViewDelegate {
             viewModel.checkDeleteFood(viewModel.foods[indexPath.item])
             cell.updateDeleteUI()
         } else {
+            viewModel.detailFood = viewModel.foods[indexPath.item]
             performSegue(withIdentifier: "showDetailFood", sender: self)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetailFood" {
-            if let indexPath = collectionView.indexPathsForSelectedItems {
-                viewModel.detailFood = viewModel.foods[indexPath[0].item]
-            }
+            let vc = segue.destination as! DetailFoodVC
+            vc.food = viewModel.detailFood
         }
     }
 }
